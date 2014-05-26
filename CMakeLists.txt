@@ -8,12 +8,7 @@ ENDIF()
 PROJECT("spuc")
 message(STATUS "Project spuc")
 
-#SET(CMAKE_C_COMPILER "/usr/bin/clang")
-#SET(CMAKE_CXX_COMPILER "/usr/bin/clang++")
-
 IF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-###set(CMAKE_EXE_LINKER_FLAGS "-static-libstdc++")
-#set(CMAKE_CXX_FLAGS "-Werror -std=c++0x ")
 set(CMAKE_CXX_FLAGS " -std=c++11 ")
 message(STATUS "Using c++11")
 ENDIF()
@@ -25,8 +20,6 @@ if (GCC_VERSION VERSION_GREATER 4.8 OR GCC_VERSION VERSION_EQUAL 4.8)
 	set(CMAKE_EXE_LINKER_FLAGS "-static-libstdc++")
 	set(CMAKE_CXX_FLAGS "-Wall -std=c++0x ")
 endif()
-
-#set(CMAKE_CXX_LINK_FLAGS "-L$ENV{SYSTEMC_HOME}/lib-linux")
 
 SET(TYPE_SRCS 
 spuc/bit.cpp
@@ -109,15 +102,8 @@ IF(Boost_FOUND)
   ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin") 
 
   SET(Boost_USE_STATIC_RUNTIME OFF)
-  FIND_PACKAGE(Boost COMPONENTS python)
-  FIND_PACKAGE(PythonLibs REQUIRED)
-  INCLUDE_DIRECTORIES("${Boost_INCLUDE_DIRS}" ${PYTHON_INCLUDE_DIRS} "/usr/include")
-  LINK_DIRECTORIES(${PYTHON_LIBRARY_DIRS} ${Boost_LIBRARY_DIRS})
-  
-  EXECUTE_PROCESS( COMMAND python -c "from distutils.sysconfig import get_python_lib; print get_python_lib()" OUTPUT_VARIABLE PYTHON_SITE_PACKAGES OUTPUT_STRIP_TRAILING_WHITESPACE)
- 
+  INCLUDE_DIRECTORIES("${Boost_INCLUDE_DIRS}" "/usr/include" ".")
   ADD_DEFINITIONS(-DSPUCBOOST)
-  INCLUDE_DIRECTORIES("/usr/include/" ".")
   ADD_LIBRARY(spuc STATIC ${SPUC_SRCS} ${COMM_SRCS})
   ADD_LIBRARY(spuc_filt STATIC ${FILT_SRCS})
   ADD_LIBRARY(spuc_types STATIC ${TYPE_SRCS})
