@@ -3,7 +3,6 @@
 
 [![Gitter chat](https://badges.gitter.im/audiofilter/spuclib.png)](https://gitter.im/audiofilter/spuclib)
 
-
 This is an update of code that has been on sourceforge for about 14 years. The genesis of this code goes back even further - before decent C++ template support and availability of a useful complex class.
 
 For now, this project is a partial copy of spuc. Common files will be moved from spuc into spuclib
