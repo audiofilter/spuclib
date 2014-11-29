@@ -59,7 +59,6 @@ spuc/cfft.cpp
 spuc/idft.cpp
 spuc/fft.cpp
 spuc/ifft.cpp
-spuc/lib_inst.cpp
 spuc/max_pn.cpp
 spuc/misc.cpp
 spuc/nco.cpp
@@ -92,33 +91,18 @@ spuc/viterbi.cpp
 )
 
 
-FIND_PACKAGE(Boost)
-IF(Boost_FOUND)
-  IF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-	# Mac OS X specific code
-	SET(OperatingSystem "Mac OS X")
-	SET(Boost_USE_STATIC_LIBS ON)
-	SET(Boost_USE_MULTITHREADED ON)
-  ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin") 
-
-  SET(Boost_USE_STATIC_RUNTIME OFF)
-  INCLUDE_DIRECTORIES("${Boost_INCLUDE_DIRS}" "/usr/include" ".")
-  ADD_DEFINITIONS(-DSPUCBOOST)
-  ADD_LIBRARY(spuc STATIC ${SPUC_SRCS} ${COMM_SRCS})
-  ADD_LIBRARY(spuc_filt STATIC ${FILT_SRCS})
-  ADD_LIBRARY(spuc_types STATIC ${TYPE_SRCS})
-  INSTALL(TARGETS spuc_filt DESTINATION "/usr/local/lib")
-  INSTALL(TARGETS spuc_types DESTINATION "/usr/local/lib")
-  INSTALL(TARGETS spuc DESTINATION "/usr/local/lib")
-  # not working
-  SET_TARGET_PROPERTIES(spuc PROPERTIES LIBRARY_OUTPUT_PATH "/usr/local/lib")
-  SET_TARGET_PROPERTIES(spuc_types PROPERTIES LIBRARY_OUTPUT_PATH "/usr/local/lib")
-ELSEIF(NOT Boost_FOUND)
-  MESSAGE(FATAL_ERROR "Unable to find correct Boost version. Did you set BOOST_ROOT?")
-ENDIF()
-
-
 ADD_DEFINITIONS("-Wall -fPIC -DSPUCBOOST")
+INCLUDE_DIRECTORIES(".")
+
+ADD_LIBRARY(spuc STATIC ${SPUC_SRCS} ${COMM_SRCS})
+ADD_LIBRARY(spuc_filt STATIC ${FILT_SRCS})
+ADD_LIBRARY(spuc_types STATIC ${TYPE_SRCS})
+INSTALL(TARGETS spuc_filt DESTINATION "/usr/local/lib")
+INSTALL(TARGETS spuc_types DESTINATION "/usr/local/lib")
+INSTALL(TARGETS spuc DESTINATION "/usr/local/lib")
+# not working
+SET_TARGET_PROPERTIES(spuc PROPERTIES LIBRARY_OUTPUT_PATH "/usr/local/lib")
+SET_TARGET_PROPERTIES(spuc_types PROPERTIES LIBRARY_OUTPUT_PATH "/usr/local/lib")
 
 option(SPUC_BUILD_PYTHON_EXTENSIONS "Build extensions" OFF)
 option(SPUC_BUILD_EXAMPLES "Build examples" OFF)
