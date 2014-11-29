@@ -47,7 +47,7 @@ namespace SPUC {
 //!  Returns an array of soft decision bits, array size is dependant on modulation type
 //!  <p>This de-maps the QAM used in 802.11A
 void qam_data_demap(long rate_index, complex<long> data_in,
-					long soft_decision_level, smart_array<long> viterbi_input)
+					long soft_decision_level, smart_array<long>& viterbi_input)
 {
   switch (rate_index) {
   case 1: (qpsk_soft_decision(data_in, (viterbi_input)));  break;
