@@ -18,6 +18,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 // from directory: spuc_templates
+#include <memory>
 #include <spuc/spuc_types.h>
 namespace SPUC {
 //! author="Tony Kirke" *
