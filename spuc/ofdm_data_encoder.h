@@ -24,7 +24,7 @@
 #include <spuc/bit_scrambler.h>
 #include <spuc/data_conv_encoder.h>
 #include <spuc/qam_mod.h>
-#include <spuc/smart_array.h>
+#include <vector>
 namespace SPUC {
 //! \file
 //! \brief  OFDM/802.11A/G Data Encoder 
@@ -50,14 +50,14 @@ public:
 	long data_index;
 	bool raw_bit; // current input data bit
 	const long Carriers;
-	smart_array<bool> raw_data;
-	smart_array<bool> interleaver_in;
-	smart_array<bool> interleaved;
-	smart_array<bool> interleaver_out;
-	smart_array<long> pre_mod;
+	std::vector<bool> raw_data;
+	std::vector<bool> interleaver_in;
+	std::vector<bool> interleaved;
+	std::vector<bool> interleaver_out;
+	std::vector<long> pre_mod;
 
  private:
-	void interleave(const smart_array<bool>& data_in); 
+	void interleave(const std::vector<bool>& data_in); 
 
  public:
 	int coded_bits_per_frame;

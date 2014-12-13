@@ -21,7 +21,7 @@
 #include <spuc/spuc_types.h>
 #include <spuc/spuc_defines.h>
 #include <cmath>
-#include <spuc/smart_array.h>
+#include <vector>
 namespace SPUC {
 //! \file
 //! \brief Calculate Allpass coefficients for halfband bireciprocal wave filter
@@ -32,8 +32,8 @@ namespace SPUC {
 //! \author Tony Kirke
 //! \ingroup functions iir
 //!  \author Tony Kirke,  Copyright(c) 2001 
-void butterworth_allpass(smart_array<float_type>& a0, 
-						 smart_array<float_type>& a1, int L);
+void butterworth_allpass(std::vector<float_type>& a0, 
+						 std::vector<float_type>& a1, int L);
 
   
 } // namespace SPUC

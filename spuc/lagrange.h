@@ -25,7 +25,7 @@
 #include <spuc/quant.h>
 #include <spuc/quantiser.h>
 #include <spuc/mixed_type.h>
-#include <spuc/smart_array.h>
+#include <vector>
 namespace SPUC {
 //! \file
 //! \brief  Template Class for Lagrange interpolation using a FIR  filter. 
@@ -46,9 +46,9 @@ template <class Numeric, class Coeff=float_type> class lagrange
 {
 public: 
   long num_taps;
-  smart_array<Coeff> coeff;
+  std::vector<Coeff> coeff;
 protected:
-  smart_array<Numeric> z; 
+  std::vector<Numeric> z; 
   Numeric output;
   quantiser<Numeric> Q;
   long round_bits;

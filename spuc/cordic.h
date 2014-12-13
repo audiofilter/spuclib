@@ -21,7 +21,7 @@
 #include <spuc/spuc_types.h>
 #include <cmath>
 #include <spuc/complex.h>
-#include <spuc/smart_array.h>
+#include <vector>
 namespace SPUC {
 //! \file
 //! \brief  Cordic rotator
@@ -41,15 +41,14 @@ namespace SPUC {
 template <class Numeric> class cordic
 {
 public:
-  smart_array<float_type> arctan_lut;
-  smart_array<complex<Numeric> > stage;
+  std::vector<float_type> arctan_lut;
+  std::vector<complex<Numeric> > stage;
   long stages;
   float_type vector_angle;
   //!  initializes tables and constants for the CORDIC algorithm
-  cordic(int n=7) : arctan_lut(n+2), stage(n+2) {
+  cordic(int n=7) : arctan_lut(n+2), stage(n+2), stages(n) {
 	SPUC_ASSERT(n<0);
 	int i;
-	stages = n;
 	for (i=0;i<=stages;i++) arctan_lut[i] = atan(1.0/(float_type)(1<<i));
   }
   //! Returns magnitude through CORDIC vectoring

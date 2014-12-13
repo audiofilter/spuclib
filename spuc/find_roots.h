@@ -21,7 +21,7 @@
 #include <spuc/spuc_types.h>
 #include <cmath>
 #include <spuc/complex.h>
-#include <spuc/smart_array.h>
+#include <vector>
 namespace SPUC {
 //! \file
 //! \brief Calculate the complex roots of a polynomial equation
@@ -30,6 +30,6 @@ namespace SPUC {
 //
 //! \author Tony Kirke
 //! \ingroup functions misc
-smart_array<complex<float_type> > find_roots(const smart_array<float_type>& a,long n);
+std::vector<complex<float_type> > find_roots(const std::vector<float_type>& a,long n);
 } // namespace SPUC
 #endif

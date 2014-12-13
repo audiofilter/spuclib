@@ -22,7 +22,7 @@
 #include <spuc/complex.h>
 #include <spuc/spuc_defines.h>
 #include <spuc/spuc_math.h>
-#include <spuc/smart_array.h>
+#include <vector>
 #define RTD  2.0/PI  // radian to decimal conversion factor 
 namespace SPUC {
 //! \file
@@ -39,7 +39,7 @@ namespace SPUC {
 //! \ingroup real_double_templates comm
 template <class Numeric, class Coeff=double> class bpe {
 
-  smart_array<complex<Numeric> > bit;      //! array containing previous inputs 
+  std::vector<complex<Numeric> > bit;      //! array containing previous inputs 
   int quad_prev;      //! Previous quadrant
   int oqtstate;       //! quadrant cross-over indicator
   float_type ang;         //! current averaged angle

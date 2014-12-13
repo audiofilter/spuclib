@@ -19,7 +19,7 @@
 */
 // from directory: spuc_templates
 #include <spuc/spuc_types.h>
-#include <spuc/smart_array.h>
+#include <vector>
 namespace SPUC {
 //! \file
 //! \brief Circular Buffer
@@ -32,7 +32,7 @@ namespace SPUC {
 template <class T> class circ_buffer {
 
  protected:
-  smart_array<T> buf;
+  std::vector<T> buf;
   int	len;
   int	ptr;
 

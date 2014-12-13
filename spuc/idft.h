@@ -20,7 +20,7 @@
 // from directory: spuc_functions
 #include <spuc/spuc_types.h>
 #include <spuc/complex.h>
-#include <spuc/smart_array.h>
+#include <vector>
 namespace SPUC {
 //! \file
 //! \brief discrete fourier transforms (IDFT and DFT)
@@ -29,10 +29,10 @@ namespace SPUC {
 //! \brief inverse discrete fourier transforms (IDFT)
 //! \author Tony Kirke
 //! \ingroup functions functions
-void idft(smart_array<complex<float_type> > y, int n);
+void idft(std::vector<complex<float_type> > y, int n);
 //! \brief discrete fourier transforms (DFT)
 //! \author Tony Kirke
 //! \ingroup functions functions
-void dft(smart_array<complex<float_type> > y, int n);
+void dft(std::vector<complex<float_type> > y, int n);
 } // namespace SPUC
 #endif

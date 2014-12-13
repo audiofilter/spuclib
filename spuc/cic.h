@@ -20,7 +20,7 @@
 // from directory: spuc_templates
 #include <spuc/spuc_types.h>
 #include <spuc/complex.h>
-#include <spuc/smart_array.h>
+#include <vector>
 namespace SPUC {
 //! \file
 //! \brief   class for CIC digital filter
@@ -38,9 +38,9 @@ namespace SPUC {
 template <class Numeric> class cic
 {
  protected:
-  smart_array<Numeric> diff; //! Differentiators
-  smart_array<Numeric> nacc; //! Accumulators
-  smart_array<Numeric> prev; //! Previous values
+  std::vector<Numeric> diff; //! Differentiators
+  std::vector<Numeric> nacc; //! Accumulators
+  std::vector<Numeric> prev; //! Previous values
   char stages; //! Number of stages
  public:                         
   //! Constructor

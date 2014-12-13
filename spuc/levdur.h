@@ -19,7 +19,7 @@
 */
 // from directory: spuc_template_array_functions
 #include <spuc/spuc_types.h>
-#include <spuc/smart_array.h>
+#include <vector>
 namespace SPUC {
 //! \file
 //! \brief Template class for Levinson-Durbin algorithm
@@ -29,10 +29,10 @@ namespace SPUC {
 //! <font color="red"><i>Under construction!</i></font>
 //! \author Tony Kirke
 //! \ingroup template_array_functions misc
-template <class T> smart_array<T> levdur(smart_array<T> R)
+template <class T> std::vector<T> levdur(std::vector<T> R)
 {
-  long N = R.len();
-  smart_array<T> a(N);
+  long N = R.size();
+  std::vector<T> a(N);
   T Pe;
   T q, at;
   int j,k,l;

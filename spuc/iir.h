@@ -26,7 +26,7 @@
 #include <spuc/iir_coeff.h>
 #include <spuc/quantiser.h>
 #include <iostream>
-#include <spuc/smart_array.h>
+#include <vector>
 namespace SPUC {
 //! \file
 //! \brief  Template Class for iir filter
@@ -42,7 +42,7 @@ public:
   long order;
   long odd;
   long n2;
-  smart_array<iir_2nd< Numeric, Coeff > > sos;
+  std::vector<iir_2nd< Numeric, Coeff > > sos;
   iir_lpf1< Numeric, Coeff > fos;
   Coeff gain;
   quantiser<Numeric> Q;

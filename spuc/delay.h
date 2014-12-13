@@ -20,7 +20,7 @@
 // from directory: spuc_templates
 #include <spuc/spuc_types.h>
 #include <spuc/spuc_defines.h>
-#include <spuc/smart_array.h>
+#include <vector>
 namespace SPUC {
 //! \file
 //! \brief  Template class for Delay line
@@ -40,7 +40,7 @@ template <class Numeric> class delay
  public: 
   long num_taps;
  protected:
-  smart_array<Numeric> z; 
+  std::vector<Numeric> z; 
       
  public: 
   //! Constructor

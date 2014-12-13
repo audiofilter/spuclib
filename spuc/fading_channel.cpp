@@ -21,7 +21,7 @@
 #include <spuc/fading_channel.h>
 #include <spuc/complex.h>
 #include <spuc/spuc_math.h>
-#include <spuc/smart_array.h>
+#include <vector>
 namespace SPUC {
 void fading_channel::setup(float_type norm_delay_spread) {
   if (norm_delay_spread) {
@@ -36,7 +36,7 @@ void fading_channel::generate_channel() {
   int i;
   float_type exp(float_type y);
   float_type temp = 0;
-  smart_array<float_type> tap_power(taps);
+  std::vector<float_type> tap_power(taps);
   //float_type tap_power[taps];
 
   for (i=0;i<taps; i++) {

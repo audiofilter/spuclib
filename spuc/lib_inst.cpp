@@ -20,7 +20,7 @@
 #include <iostream>
 #include <fstream>
 #include <spuc/complex.h>
-#include <spuc/smart_array.h>
+#include <vector>
 #include <spuc/fir.h>
 namespace SPUC {
 
@@ -33,7 +33,7 @@ namespace SPUC {
   int dummy_vf(void) {
 	double a;
 	fir<double,double> z(32);
-    smart_array<double> tmp;
+    std::vector<double> tmp;
 
 	tmp = get_taps(z);
 	
