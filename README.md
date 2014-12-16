@@ -7,6 +7,8 @@ This is an update of code that has been on sourceforge for about 14 years. The g
 
 For now, this project is a partial copy of spuc. Common files will be moved from spuc into spuclib
 
+**Now MIT License**
+
 More documentation pages here
 
 http://audiofilter.github.io/spuc/
