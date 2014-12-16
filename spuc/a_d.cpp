@@ -11,9 +11,7 @@ a_d::a_d(char h) : size(h) {
   max = ((1 << (size - 1)) - 1);
   min = ~max;
 }
-complex<long> a_d::clock(complex<float_type> x) {
-  return (complex<long>(clock(real(x)), clock(imag(x))));
-}
+complex<long> a_d::clock(complex<float_type> x) { return (complex<long>(clock(real(x)), clock(imag(x)))); }
 //! Quantize and limit signal to size bits
 long a_d::clock(float_type x) {
   long quant;

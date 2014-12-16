@@ -44,7 +44,5 @@ complex<float_type> polar(float_type amp, float_type arg) {
   return (complex<float_type>(amp * cos(arg), amp * sin(arg)));
 }
 //! complex exponential
-complex<float_type> exp(complex<float_type> x) {
-  return (::exp(real(x)) * expj(imag(x)));
-}
+complex<float_type> exp(complex<float_type> x) { return (::exp(real(x)) * expj(imag(x))); }
 }  // namespace SPUC

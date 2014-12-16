@@ -20,18 +20,15 @@ namespace SPUC {
 // double + long                     = double
 // long   + long                     = double
 // complex<Anything> + Anything      = complex<double>
-template <typename T, typename D = double>
-class unquantized_mixed_type {
+template <typename T, typename D = double> class unquantized_mixed_type {
  public:
   typedef double dtype;
 };
-template <typename T, typename D>
-class unquantized_mixed_type<complex<T>, D> {
+template <typename T, typename D> class unquantized_mixed_type<complex<T>, D> {
  public:
   typedef complex<double> dtype;
 };
-template <typename T, typename D>
-class unquantized_mixed_type<T, complex<D> > {
+template <typename T, typename D> class unquantized_mixed_type<T, complex<D> > {
  public:
   typedef complex<double> dtype;
 };

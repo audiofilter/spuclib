@@ -19,8 +19,7 @@ namespace SPUC {
 //! \ingroup double_templates misc
 //! \image html delay.gif
 //! \image latex delay.eps
-template <class Numeric, int D>
-class fixed_delay {
+template <class Numeric, int D> class fixed_delay {
  public:
   long NumTaps;
 

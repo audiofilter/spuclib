@@ -7,9 +7,8 @@
 namespace SPUC {
 //! \file
 //! \brief calculates fir filter coefficients based on frequency sampling design
-//using IDFT
-std::vector<float_type> inv_dft_symmetric(const std::vector<float_type>& A,
-                                          int N) {
+// using IDFT
+std::vector<float_type> inv_dft_symmetric(const std::vector<float_type>& A, int N) {
   std::vector<float_type> h(N);
   float_type x, val;
   float_type M = (N - 1.0) / 2.0;
@@ -23,7 +22,7 @@ std::vector<float_type> inv_dft_symmetric(const std::vector<float_type>& A,
   return h;
 }
 //! \brief calculates fir filter coefficients based on frequency sampling design
-//using IDFT
+// using IDFT
 std::vector<float_type> inv_dft(const std::vector<float_type>& A, int N) {
   std::vector<float_type> h(N);
   float_type x, val;

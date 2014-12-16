@@ -18,8 +18,7 @@ namespace SPUC {
 //!  several stages of 1st order allpass sections
 //! \author Tony Kirke
 //! \ingroup double_templates Allpass
-template <class Numeric, class Coeff = float_type>
-class allpass {
+template <class Numeric, class Coeff = float_type> class allpass {
  public:
   long stages;
   std::vector<allpass_1<Numeric, Coeff> > ap;

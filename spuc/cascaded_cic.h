@@ -9,8 +9,7 @@
 namespace SPUC {
 
 //! \file
-template <class Numeric>
-class cascaded_cic {
+template <class Numeric> class cascaded_cic {
  protected:
   long rate;
   char stages;

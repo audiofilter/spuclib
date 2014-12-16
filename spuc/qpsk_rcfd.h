@@ -23,8 +23,7 @@ namespace SPUC {
 //!   Curr - current sample
 //! \author Tony Kirke
 //!	\ingroup real_template_functions comm
-template <class T>
-T qpsk_rcfd(complex<T> fmf, complex<T> curr) {
+template <class T> T qpsk_rcfd(complex<T> fmf, complex<T> curr) {
   return (imag(curr) * real(fmf) - imag(fmf) * real(curr));
 }
 }  // namespace SPUC

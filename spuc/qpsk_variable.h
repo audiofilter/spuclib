@@ -26,18 +26,17 @@
 namespace SPUC {
 //! \file
 //! \brief A QPSK receiver that can operate over a range of non-integer sampling
-//rates
+// rates
 //
 //! \brief A QPSK receiver that can operate over a range of non-integer sampling
-//rates
+// rates
 //
 //! ,Symbol timing, frequency control and carrier phase locked loops
 //! are included. Also contains root-raised cosine matched filter,
 //! A/D and agc function.
 //! \author Tony Kirke
 //!  \ingroup real_templates comm examples
-template <class Numeric>
-class qpsk_variable {
+template <class Numeric> class qpsk_variable {
  public:
   typedef typename fundtype<Numeric>::ftype CNumeric;
 
@@ -190,7 +189,7 @@ class qpsk_variable {
     carrier__nco.clock();
     Numeric carrier_phase = carrier__nco.get_phase();
     //	long carrier_phase =
-    //carrier_nco.run(carrier_loop_out,symbol_x2_clk_pls);
+    // carrier_nco.run(carrier_loop_out,symbol_x2_clk_pls);
 
     baseband = cordic_mult.rotate(adc, carrier_phase);
 #ifdef NODC
@@ -207,8 +206,7 @@ class qpsk_variable {
     // Processing at Decimated Rate
     if (sample_clk) {
       // TEMP -> FORCE SYMBOL_LOOP_OUT-> LONG
-      resampled =
-          rate_change.update(decimated, (long)symbol_loop_out, symbol_clk);
+      resampled = rate_change.update(decimated, (long)symbol_loop_out, symbol_clk);
       resampled = round(resampled, resampler_round);
       symbol_x2_clk = rate_change.ready;
 
@@ -255,8 +253,7 @@ class qpsk_variable {
             carrier_error = discriminators.pll_disc();
           // Symbol + timing loop filters
           symbol_loop_out = symbol_loop_filter.update(timing_error);
-          if (!rcfd || !afc)
-            carrier_loop_out = carrier_loop_filter.update(carrier_error);
+          if (!rcfd || !afc) carrier_loop_out = carrier_loop_filter.update(carrier_error);
         }
       }
     }

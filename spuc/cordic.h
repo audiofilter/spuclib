@@ -23,8 +23,7 @@ namespace SPUC {
 //! \image html cordic.png
 //! \ingroup real_templates misc
 //! \image html cordic.gif
-template <class Numeric>
-class cordic {
+template <class Numeric> class cordic {
  public:
   std::vector<float_type> arctan_lut;
   std::vector<complex<Numeric> > stage;
@@ -34,8 +33,7 @@ class cordic {
   cordic(int n = 7) : arctan_lut(n + 2), stage(n + 2), stages(n) {
     SPUC_ASSERT(n < 0);
     int i;
-    for (i = 0; i <= stages; i++)
-      arctan_lut[i] = atan(1.0 / (float_type)(1 << i));
+    for (i = 0; i <= stages; i++) arctan_lut[i] = atan(1.0 / (float_type)(1 << i));
   }
   //! Returns magnitude through CORDIC vectoring
   Numeric vector_mag(complex<Numeric> in) { return (cordic_vector(in)); }
@@ -57,22 +55,17 @@ class cordic {
     if (angle > PI) {
       stage[0] = -shift_in;
       angle -= PI;
-    } else {
-      stage[0] = shift_in;
-    }
+    } else { stage[0] = shift_in; }
     if (angle > PI / 2) {
       stage[1] = complex<Numeric>(-imag(stage[0]), real(stage[0]));
       angle -= PI / 2;
-    } else {
-      stage[1] = stage[0];
-    }
+    } else { stage[1] = stage[0]; }
     // Subsequent rotations, with right shifts
     for (i = 0; i <= stages; i++) {
       long sign = (angle < 0) ? -1 : 1;
       complex<Numeric> shift_stage = (stage[i + 1] >> i);
-      stage[i + 2] =
-          complex<Numeric>(real(stage[i + 1]) - sign * (imag(shift_stage)),
-                           imag(stage[i + 1]) + sign * (real(shift_stage)));
+      stage[i + 2] = complex<Numeric>(real(stage[i + 1]) - sign * (imag(shift_stage)),
+                                      imag(stage[i + 1]) + sign * (real(shift_stage)));
       angle -= sign * arctan_lut[i];
     }
     return (stage[stages]);
@@ -115,8 +108,7 @@ class cordic {
       //	  long sign = (stage[i].im < 0) ? -1 : 1;
       complex<Numeric> shift_stage = (stage[i + 1] >> i);
       stage[i + 1] =
-          complex<Numeric>(real(stage[i]) - sign * (imag(shift_stage)),
-                           imag(stage[i]) + sign * (real(shift_stage)));
+          complex<Numeric>(real(stage[i]) - sign * (imag(shift_stage)), imag(stage[i]) + sign * (real(shift_stage)));
       vector_angle -= sign * arctan_lut[i];
     }
     return (real(stage[stages]));

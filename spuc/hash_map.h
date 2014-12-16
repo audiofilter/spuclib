@@ -9,8 +9,7 @@
 #include <unordered_map>
 namespace SPUC {
 //! Class that implements a hash map with string key
-template <typename T>
-class hash_map {
+template <typename T> class hash_map {
  public:
   //! Clear all contents of the table
   void clear();
@@ -23,32 +22,24 @@ class hash_map {
   //! Check if table already contains key
   bool contains(std::string key);
   //! Remove key and corresponding value from table (return operation success /
-  //fail)
+  // fail)
   bool remove(std::string key);
   //! Get value corresponding to key (if it exists)
   T getValue(std::string key);
 
   typedef std::unordered_map<std::string, T> HashTableType;
-  HashTableType table;  // Actual hash table
-  typename std::unordered_map<std::string, T>::const_iterator
-      _iter;  // Iterator
+  HashTableType table;                                                // Actual hash table
+  typename std::unordered_map<std::string, T>::const_iterator _iter;  // Iterator
 };
 
 // Clear all contents of the table
-template <typename T>
-void hash_map<T>::clear() {
-  table.clear();
-}
+template <typename T> void hash_map<T>::clear() { table.clear(); }
 
 // Get number of elements in the table
-template <typename T>
-uint32_t hash_map<T>::getSize() {
-  return (uint32_t)table.size();
-}
+template <typename T> uint32_t hash_map<T>::getSize() { return (uint32_t)table.size(); }
 
 // Add key and value to the table
-template <typename T>
-bool hash_map<T>::add(std::string key, T value) {
+template <typename T> bool hash_map<T>::add(std::string key, T value) {
   // Check if key already exists in table
   if (contains(key))
     return false;
@@ -57,20 +48,16 @@ bool hash_map<T>::add(std::string key, T value) {
     return true;
   }
 }
-template <typename T>
-bool hash_map<T>::set(std::string key, T value) {
+template <typename T> bool hash_map<T>::set(std::string key, T value) {
   // Check if key already exists in table
   if (contains(key)) {
     table[key] = value;
     return true;
-  } else {
-    return false;
-  }
+  } else { return false; }
 }
 
 // Check if table already contains key
-template <typename T>
-bool hash_map<T>::contains(std::string key) {
+template <typename T> bool hash_map<T>::contains(std::string key) {
   if (table.count(key) == 0)
     return false;
   else
@@ -79,8 +66,7 @@ bool hash_map<T>::contains(std::string key) {
 
 // Remove key and corresponding value from table (return operation success /
 // fail)
-template <typename T>
-bool hash_map<T>::remove(std::string key) {
+template <typename T> bool hash_map<T>::remove(std::string key) {
   // Check if key already exists in table
   if (contains(key)) {
     table.erase(key);
@@ -91,11 +77,8 @@ bool hash_map<T>::remove(std::string key) {
 }
 
 // Get value corresponding to key (if it exists)
-template <typename T>
-T hash_map<T>::getValue(std::string key) {
-  if (contains(key)) {
-    return table[key];
-  } else {
+template <typename T> T hash_map<T>::getValue(std::string key) {
+  if (contains(key)) { return table[key]; } else {
     T x(0);
     return x;
   }

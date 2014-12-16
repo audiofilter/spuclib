@@ -18,19 +18,16 @@ namespace SPUC {
 //! \brief Determine base class for complex, builtin, sint, etc, classes
 //! \author Tony Kirke
 //! \ingroup traits traits
-template <typename T>
-class base_type {
+template <typename T> class base_type {
  public:
   typedef T btype;
 };
-template <typename T>
-class base_type<complex<T> > {
+template <typename T> class base_type<complex<T> > {
  public:
   typedef T btype;
 };
 #ifndef NO_BUILTIN
-template <typename T>
-class base_type<builtin<T> > {
+template <typename T> class base_type<builtin<T> > {
  public:
   typedef T btype;
 };

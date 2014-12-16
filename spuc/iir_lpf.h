@@ -21,8 +21,7 @@ namespace SPUC {
 //! Note: Not normalized
 //! \author Tony Kirke
 //! \ingroup double_templates iir
-template <class Numeric, class Coeff = float_type>
-class iir_lpf : public iir_lpf1<Numeric, Coeff> {
+template <class Numeric, class Coeff = float_type> class iir_lpf : public iir_lpf1<Numeric, Coeff> {
   using SPUC::iir_lpf1<Numeric, Coeff>::gain;
   using SPUC::iir_lpf1<Numeric, Coeff>::previous_in;
   using SPUC::iir_lpf1<Numeric, Coeff>::previous_out;

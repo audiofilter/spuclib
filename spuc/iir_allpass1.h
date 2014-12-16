@@ -25,8 +25,7 @@ namespace SPUC {
 //! \ingroup double_templates iir
 //! \image html allpass_halfband.gif
 //! \image latex allpass_halfband.eps
-template <class Numeric, class Coeff = float_type>
-class iir_allpass1 {
+template <class Numeric, class Coeff = float_type> class iir_allpass1 {
  protected:
   //! The 2 1st order allpass filters
   int Delay;

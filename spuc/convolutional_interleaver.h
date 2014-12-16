@@ -16,8 +16,7 @@ namespace SPUC {
 //! \ingroup templates interl
 //!  \class convolutional_interleaver comm/conv_interleaver.h
 //!  \endcode
-template <class T>
-class convolutional_interleaver {
+template <class T> class convolutional_interleaver {
  public:
   //! convolutional_interleaver constructor
   convolutional_interleaver(void) {
@@ -40,9 +39,7 @@ class convolutional_interleaver {
     cols = in_cols;
     input_length = 0;
     if (rows > MAXINTLVR) rows = MAXINTLVR;
-    for (i = 0; i < rows; i++) {
-      D[i].set_size(i * cols);
-    }
+    for (i = 0; i < rows; i++) { D[i].set_size(i * cols); }
     wr_sel = 0;
     rd_sel = 0;
   }
@@ -71,40 +68,32 @@ class convolutional_interleaver {
 //
 // Convolutional Interleaver
 //
-template <class T>
-convolutional_interleaver<T>::convolutional_interleaver(int in_rows,
-                                                        int in_cols) {
+template <class T> convolutional_interleaver<T>::convolutional_interleaver(int in_rows, int in_cols) {
   int i;
   rows = in_rows;
   cols = in_cols;
   input_length = 0;
   if (rows > MAXINTLVR) rows = MAXINTLVR;
-  for (i = 0; i < rows; i++) {
-    D[i].set_size(i * cols);
-  }
+  for (i = 0; i < rows; i++) { D[i].set_size(i * cols); }
   rd_sel = wr_sel = 0;
 }
 
-template <class T>
-T convolutional_interleaver<T>::interleave(const T input) {
+template <class T> T convolutional_interleaver<T>::interleave(const T input) {
   interleave_write(input);
   return (interleave_read());
 }
-template <class T>
-void convolutional_interleaver<T>::interleave_write(const T input) {
+template <class T> void convolutional_interleaver<T>::interleave_write(const T input) {
   D[wr_sel].input(input);
   wr_sel++;
   wr_sel = wr_sel % rows;
 }
-template <class T>
-T convolutional_interleaver<T>::interleave_read(void) {
+template <class T> T convolutional_interleaver<T>::interleave_read(void) {
   T outp = D[rd_sel].last();
   rd_sel++;
   rd_sel = rd_sel % rows;
   return (outp);
 }
-template <class T>
-T convolutional_interleaver<T>::deinterleave(const T input) {
+template <class T> T convolutional_interleaver<T>::deinterleave(const T input) {
   // not using rd_sel yet!
   T outp = D[rows - 1 - wr_sel].update(input);
   wr_sel++;

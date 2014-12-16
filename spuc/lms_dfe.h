@@ -22,8 +22,7 @@ namespace SPUC {
 //! \ingroup double_utemplates comm
 //! \image html lms_dfe.gif
 //! \image latex lms_dfe.eps
-template <class Numeric, class Coeff = double>
-class lms_dfe {
+template <class Numeric, class Coeff = double> class lms_dfe {
  public:
   typedef typename base_type<Numeric>::btype real_type;
   //! Feedforward FIR section
@@ -36,8 +35,7 @@ class lms_dfe {
 
  public:
   //! Constructor with feedforward size, feedback size and gain
-  lms_dfe(char inf = 16, char inb = 0, real_type gain = 0, Numeric mid_val = 1)
-      : u(gain) {
+  lms_dfe(char inf = 16, char inb = 0, real_type gain = 0, Numeric mid_val = 1) : u(gain) {
     mid_tap = mid_val;
     ff.set_size(inf);
     ff.set_gain(gain);
@@ -45,9 +43,7 @@ class lms_dfe {
       fb.set_size(inb);
       fb.set_gain(gain);
       ff.coeff[inf - 1] = mid_tap;
-    } else {
-      ff.coeff[inf / 2] = mid_tap;
-    }
+    } else { ff.coeff[inf / 2] = mid_tap; }
   }
   ~lms_dfe() {}
   void reset() {
@@ -56,9 +52,7 @@ class lms_dfe {
       if (fb.num_taps > 0) {
         fb.reset();
         ff.settap(ff.num_taps - 1, mid_tap);
-      } else {
-        ff.settap(ff.num_taps / 2, mid_tap);
-      }
+      } else { ff.settap(ff.num_taps / 2, mid_tap); }
     }
   }
   void set_ff_tap(long i, Numeric x) { ff.coeff[i] = x; }

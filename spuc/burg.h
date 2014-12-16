@@ -16,8 +16,7 @@ namespace SPUC {
 //! \author Tony Kirke,  Copyright(c) 2001
 //! \author Tony Kirke
 //! \ingroup template_array_functions misc
-template <class T>
-std::vector<T> burg(std::vector<T> x, int P) {
+template <class T> std::vector<T> burg(std::vector<T> x, int P) {
   long N = x.size();
   const double EPS = 1e-30;
   std::vector<T> a(P);
@@ -33,9 +32,7 @@ std::vector<T> burg(std::vector<T> x, int P) {
   int t, p;
   int i;
 
-  for (i = 0; i < N; i++) {
-    ef[i] = eb[i] = x[i];
-  }
+  for (i = 0; i < N; i++) { ef[i] = eb[i] = x[i]; }
 
   for (p = 0; p < P; p++) {
     num = (T)0;

@@ -109,8 +109,7 @@ class vlog {
 
   inline long operator~() { return (~frac); }
   inline bool operator==(self r) {
-    return ((frac == r.frac) && (intlog = r.intlog) && (sign == r.sign) &&
-            (frac_bits = r.frac_bits));
+    return ((frac == r.frac) && (intlog = r.intlog) && (sign == r.sign) && (frac_bits = r.frac_bits));
   }
   inline bool operator!=(long r) { return ((frac != (r << intlog))); }
 

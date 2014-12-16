@@ -59,11 +59,7 @@ inline float_type hypot(complex<float_type> z) { return sqrt(magsq(z)); }
 //! \ingroup functions functions
 complex<float_type> polar(float_type amp, float_type arg);
 //! complex exponential
-inline complex<float> expj(float x) {
-  return (complex<float>(std::cos(x), std::sin(x)));
-}
-inline complex<double> expj(double x) {
-  return (complex<double>(std::cos(x), std::sin(x)));
-}
+inline complex<float> expj(float x) { return (complex<float>(std::cos(x), std::sin(x))); }
+inline complex<double> expj(double x) { return (complex<double>(std::cos(x), std::sin(x))); }
 }  // namespace SPUC
 #endif

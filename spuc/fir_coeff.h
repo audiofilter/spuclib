@@ -18,8 +18,7 @@ namespace SPUC {
 //! \ingroup templates fir
 //! \image html fir.gif
 //! \image latex fir.eps
-template <class Numeric>
-class fir_coeff {
+template <class Numeric> class fir_coeff {
  public:
   std::vector<Numeric> coeff;
 
@@ -72,8 +71,7 @@ class fir_coeff {
     for (int i = 0; i < num_taps; i++) std::cout << coeff[i] << ",";
     std::cout << "\n";
   }
-  template <class N>
-  friend std::vector<N> get_taps(fir_coeff<N> x);
+  template <class N> friend std::vector<N> get_taps(fir_coeff<N> x);
   void settap(std::vector<Numeric> z) {
     for (int i = 0; i < num_taps; i++) coeff[i] = z[i];
   }
@@ -91,8 +89,7 @@ class fir_coeff {
   }
 };
 
-template <class T>
-std::vector<T> get_taps(fir_coeff<T> f) {
+template <class T> std::vector<T> get_taps(fir_coeff<T> f) {
   long N = f.num_taps;
   std::vector<T> V(N);
   for (int i = 0; i < N; i++) V[i] = f.coeff[i];

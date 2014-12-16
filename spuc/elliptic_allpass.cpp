@@ -7,8 +7,7 @@
 #include <vector>
 #define MINFP 0.005
 namespace SPUC {
-void elliptic_allpass(std::vector<float_type>& a0, std::vector<float_type>& a1,
-                      float_type fp, int L) {
+void elliptic_allpass(std::vector<float_type>& a0, std::vector<float_type>& a1, float_type fp, int L) {
   int N = 2 * L + 1;
   int l;
   int i = 0;

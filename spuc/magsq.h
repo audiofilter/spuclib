@@ -15,8 +15,7 @@ namespace SPUC {
 //! template function that uses a class to allow template specialization
 //! \author Tony Kirke
 //! \ingroup template_functions misc
-template <typename T>
-typename base_type<T>::btype magsq(T in) {
+template <typename T> typename base_type<T>::btype magsq(T in) {
   typename base_type<T>::btype X = magsqr<T>::magsqd(in);
   return (X);
 }

@@ -20,10 +20,7 @@ class bit_scrambler {
 
  public:
   unsigned long u;
-  bit_scrambler(long gen = 0x48, long bits = 7, long uinit = -1)
-      : g(gen), span(bits), u(uinit) {
-    ;
-  }
+  bit_scrambler(long gen = 0x48, long bits = 7, long uinit = -1) : g(gen), span(bits), u(uinit) { ; }
   void reset() { u = ~0; }
   bool scramble(bool data_in);
   //! Exclusive or reduction

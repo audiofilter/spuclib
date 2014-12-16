@@ -16,8 +16,7 @@ namespace SPUC {
 //!   Derived from base class int_u.
 //! \author Tony Kirke
 //! \ingroup n_templates base
-template <long Bits = 32>
-class uint : public int_u {
+template <long Bits = 32> class uint : public int_u {
  public:
   bool overflow;
 

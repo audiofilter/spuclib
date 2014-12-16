@@ -16,8 +16,7 @@ namespace SPUC {
 //! \author="Tony Kirke" Copyright(c) 1993-1996
 //! \author Tony Kirke
 //! \ingroup templates fir
-template <class Numeric>
-class sum_and_dump {
+template <class Numeric> class sum_and_dump {
  public:
   Numeric average;
   Numeric result;

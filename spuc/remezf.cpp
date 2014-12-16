@@ -11,10 +11,9 @@ namespace SPUC {
 // weighting functions are passed as template functions,
 // thus allowing a simpler interface
 //!  \author Tony Kirke,  Copyright(c) 2001
-template <float_type Des_function(float_type),
-          float_type Weight_function(float_type)>
-void remez_function(std::vector<float_type>& r_fir, int numtaps, int numband,
-                    int r, std::vector<float_type>& bands, int type) {
+template <float_type Des_function(float_type), float_type Weight_function(float_type)>
+void remez_function(std::vector<float_type>& r_fir, int numtaps, int numband, int r, std::vector<float_type>& bands,
+                    int type) {
   float_type floor(float_type x);
   int j = 0;
   int k;
@@ -23,8 +22,7 @@ void remez_function(std::vector<float_type>& r_fir, int numtaps, int numband,
   // Predict dense grid size in advance for array sizes
   int gridSize = 0;
   for (int i = 0; i < numband; i++) {
-    gridSize += (int)floor(
-        0.5 + 2 * r * GRIDDENSITY * (bands[2 * i + 1] - bands[2 * i]));
+    gridSize += (int)floor(0.5 + 2 * r * GRIDDENSITY * (bands[2 * i + 1] - bands[2 * i]));
   }
   int symmetry = (type == BANDPASS) ? POSITIVE : NEGATIVE;
   if (symmetry == NEGATIVE) gridSize--;

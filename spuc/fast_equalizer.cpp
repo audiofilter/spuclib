@@ -35,14 +35,12 @@ void fast_equalizer::set_num_bands(int B) {
 
 void fast_equalizer::print_gains() {
   std::cout << "Eq gains = ";
-  for (int i = 0; i < num_bands; i++)
-    std::cout << (int)20 * log10(gains[i]) << " (dB), ";
+  for (int i = 0; i < num_bands; i++) std::cout << (int)20 * log10(gains[i]) << " (dB), ";
   std::cout << "\n";
 }
 void fast_equalizer::print_levels() {
   std::cout << "Eq levels = ";
-  for (int i = 0; i < num_bands; i++)
-    std::cout << (int)20 * log10(levels[i]) << " (dB), ";
+  for (int i = 0; i < num_bands; i++) std::cout << (int)20 * log10(levels[i]) << " (dB), ";
   std::cout << "\n";
 }
 
@@ -57,14 +55,10 @@ void fast_equalizer::reset() {
   for (int i = 0; i < num_bands - 1; i++) S_Up[i].set_coeffs(fp, AP_ORDER, 2);
 }
 
-void fast_equalizer::adjust_level(int filt_num, double gain) {
-  gains[filt_num] = gain;
-}
+void fast_equalizer::adjust_level(int filt_num, double gain) { gains[filt_num] = gain; }
 
 void fast_equalizer::update_levels() {
-  for (int i = 0; i < num_bands; i++) {
-    levels[i] = lev_gain * levels[i] + (1 - lev_gain) * magsq(eq[i]);
-  }
+  for (int i = 0; i < num_bands; i++) { levels[i] = lev_gain * levels[i] + (1 - lev_gain) * magsq(eq[i]); }
 }
 void fast_equalizer::get_gains(float* lx) {
   for (int i = 0; i < num_bands; i++) lx[i] = gains[i];
@@ -82,8 +76,7 @@ void fast_equalizer::get_levels(float* lx) {
   std::cout << "\n";
 #endif
 }
-bool fast_equalizer::stage(complex<double> s, int i, complex<double>& h,
-                           complex<double>& l) {
+bool fast_equalizer::stage(complex<double> s, int i, complex<double>& h, complex<double>& l) {
   // Do HbF
   bool vld1 = vld_All[i];
   l = S_All[i].clock(s);
@@ -103,9 +96,7 @@ complex<double> fast_equalizer::stage_up_down(int i, complex<double> s) {
     else
       tl2 = gains[i + 1] * tl2;
     up2 = tl2 + gains[i] * th2;
-  } else {
-    up2 = 0;
-  }
+  } else { up2 = 0; }
   up = S_Up[i - 1].clock(up2);
   return (up);
 }

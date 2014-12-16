@@ -15,10 +15,10 @@ namespace SPUC {
 //!
 //! \file
 //! \brief  Template class for 1st order allpass filter with programmble gain
-//and delay
+// and delay
 //
 //! \brief  Template class for 1st order allpass filter with programmble gain
-//and delay
+// and delay
 //
 //! Template class for 1st-order Allpass filter.
 //! The filter is a "first-order" Allpass section of
@@ -29,8 +29,7 @@ namespace SPUC {
 //! \author Tony Kirke
 //! \image html allpass_1.png
 //! \ingroup double_templates Allpass
-template <class Numeric, class Coeff = float_type>
-class allpass_1 {
+template <class Numeric, class Coeff = float_type> class allpass_1 {
  protected:
   //! number of unit sample delays
   long size;

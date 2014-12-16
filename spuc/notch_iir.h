@@ -13,15 +13,12 @@ namespace SPUC {
 //! \author Tony Kirke
 //! \image html notch_iir.png
 //! \ingroup double_templates iir
-template <class Numeric, class Coeff = float_type>
-class notch_iir {
+template <class Numeric, class Coeff = float_type> class notch_iir {
  public:
   iir_2nd<Numeric, Coeff> filter;
   Coeff gain;
 
-  notch_iir(Coeff B, Coeff Y) : filter(1, Y * (1 + B), B, 2 * Y, 1) {
-    gain = (1 + B) * (Coeff)(0.5);
-  }
+  notch_iir(Coeff B, Coeff Y) : filter(1, Y * (1 + B), B, 2 * Y, 1) { gain = (1 + B) * (Coeff)(0.5); }
   void set_coeffs(Coeff B, Coeff Y) {
     filter.set_coeffs(1, Y * (1 + B), B, 2 * Y, 1);
     gain = (1 + B) * (Coeff)(0.5);

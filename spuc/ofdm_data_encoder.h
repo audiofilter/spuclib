@@ -61,8 +61,7 @@ class ofdm_data_encoder {
   }
   // Determine number of OFDM symbol (must be called AFTER set_rate())
   long tx_burst_size(long bytes) {
-    number_symbols =
-        (8 * bytes + 6 + coded_bits_per_frame + 1) / coded_bits_per_frame;
+    number_symbols = (8 * bytes + 6 + coded_bits_per_frame + 1) / coded_bits_per_frame;
     total_bits = number_symbols * coded_bits_per_frame;
     return (total_bits);
   }

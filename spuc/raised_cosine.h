@@ -16,8 +16,7 @@ namespace SPUC {
 //! \brief  Raised Cosine functions
 //! \author Tony Kirke
 //! \ingroup template_functions comm
-template <class T>
-void raised_cosine(fir_coeff<T>& rcfir, float_type alpha, float_type rate) {
+template <class T> void raised_cosine(fir_coeff<T>& rcfir, float_type alpha, float_type rate) {
   int i;
   int num_taps = rcfir.num_taps;
   double gain = 1.0 / rate;

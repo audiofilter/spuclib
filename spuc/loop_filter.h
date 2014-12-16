@@ -21,8 +21,7 @@ namespace SPUC {
 //! \ingroup real_double_templates PLL
 //! \image html loop_filter.gif
 //! \image latex loop_filter.eps
-template <class Numeric, class Coeff = double>
-class loop_filter {
+template <class Numeric, class Coeff = double> class loop_filter {
  public:
   //! enable first order branch
   long k0_en;

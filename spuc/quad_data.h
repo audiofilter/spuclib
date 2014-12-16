@@ -25,8 +25,7 @@ namespace SPUC {
 //!  \author Tony Kirke,  Copyright(c) 2001
 //! \author Tony Kirke
 //!  \ingroup real_templates comm
-template <class Numeric>
-class quad_data {
+template <class Numeric> class quad_data {
  public:
   typedef typename fundtype<Numeric>::ftype CNumeric;
   fir_interp<complex<CNumeric>, Numeric> rcfir;
@@ -37,16 +36,10 @@ class quad_data {
   complex<CNumeric> data;
   lagrange<complex<CNumeric> > interp;
   float_type prev_timing_offset;
-  void set_initial_offset(float_type timing_init) {
-    prev_timing_offset = timing_init;
-  }
+  void set_initial_offset(float_type timing_init) { prev_timing_offset = timing_init; }
 
   quad_data(int total_over)
-      : rcfir(12 * total_over + 1),
-        pn_i(0x006d, 63, -1),
-        pn_q(0x074d, 1023, -1),
-        data(1, 1),
-        interp(4) {
+      : rcfir(12 * total_over + 1), pn_i(0x006d, 63, -1), pn_q(0x074d, 1023, -1), data(1, 1), interp(4) {
     over = total_over;
     rcfir.set_rate(over);
     rcfir.set_automatic();

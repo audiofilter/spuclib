@@ -20,8 +20,7 @@ namespace SPUC {
 //! \ingroup templates misc
 //! \image html delay.gif
 //! \image latex delay.eps
-template <class Numeric>
-class delay {
+template <class Numeric> class delay {
  public:
   long num_taps;
 

@@ -6,8 +6,7 @@
 #include <spuc/spuc_defines.h>
 #include <spuc/root_raised_cosine_imp.h>
 namespace SPUC {
-float_type root_raised_cosine_imp(float_type alpha, float_type xin,
-                                  float_type rate, long num_taps)
+float_type root_raised_cosine_imp(float_type alpha, float_type xin, float_type rate, long num_taps)
 //-----------------------------------------------------------------------
 //       Calculates the square root raised cosine pulse shape given the
 //		excess bandwidth value beta and the index.
@@ -33,8 +32,7 @@ float_type root_raised_cosine_imp(float_type alpha, float_type xin,
     if (alpha == 1) return (-1);
     x3 = (1 - alpha) * x1;
     x2 = (1 + alpha) * x1;
-    nom = sin(x2) * (1 + alpha) * PI -
-          cos(x3) * ((1 - alpha) * PI * rate) / (4 * alpha * xindx) +
+    nom = sin(x2) * (1 + alpha) * PI - cos(x3) * ((1 - alpha) * PI * rate) / (4 * alpha * xindx) +
           sin(x3) * rate * rate / (4 * alpha * xindx * xindx);
     denom = -32 * PI * alpha * alpha * xindx / rate;
   }

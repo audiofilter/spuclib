@@ -13,8 +13,7 @@ namespace SPUC {
 //
 //! \author Tony Kirke
 //! \ingroup n_templates sim
-template <int M>
-class fnco {
+template <int M> class fnco {
  public:
   uint<M> phase;
   //  char v[20];

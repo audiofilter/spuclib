@@ -6,7 +6,6 @@
 #include <spuc/spuc_types.h>
 #include <spuc/spuc_typedefs.h>
 namespace SPUC {
-float_type root_raised_cosine_imp(float_type alpha, float_type xin,
-                                  float_type rate, long num_taps);
+float_type root_raised_cosine_imp(float_type alpha, float_type xin, float_type rate, long num_taps);
 }  // namespace SPUC
 #endif

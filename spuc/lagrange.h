@@ -27,8 +27,7 @@ namespace SPUC {
 //! \ingroup double_templates fir
 //! \image html lagrange.gif
 //! \image latex lagrange.eps
-template <class Numeric, class Coeff = float_type>
-class lagrange {
+template <class Numeric, class Coeff = float_type> class lagrange {
  public:
   long num_taps;
   std::vector<Coeff> coeff;
@@ -53,8 +52,7 @@ class lagrange {
 
   lagrange(void) : Q(0){};
   //! Constructor
-  lagrange(long n, long b = 0)
-      : num_taps(n), coeff(n + 1), z(n + 1), Q(b), round_bits(b) {
+  lagrange(long n, long b = 0) : num_taps(n), coeff(n + 1), z(n + 1), Q(b), round_bits(b) {
     int i;
     SPUC_ASSERT(n < 0);
     for (i = 0; i <= n; i++) {
@@ -109,7 +107,7 @@ class lagrange {
     return (output);
   }
   //! Rephase => recalculate coefficients and output  for new offset (for
-  //upsampling)
+  // upsampling)
   Numeric rephase(float_type offset) {
     // Calculate coefficients
     calculate_coeff(offset);

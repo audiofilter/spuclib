@@ -22,8 +22,7 @@ namespace SPUC {
 //!  IIR function implemented with FIR class using special iir function
 //! \author Tony Kirke
 //!  \ingroup double_templates iir
-template <class Numeric, class Coeff = float_type>
-class iir_df {
+template <class Numeric, class Coeff = float_type> class iir_df {
  public:
   fir<Numeric, Coeff> poles;
   fir<Numeric, Coeff> zeros;
@@ -46,8 +45,7 @@ class iir_df {
     err = poles.read_taps(filep);
     err += zeros.read_taps(filez);
   }
-  iir_df<Numeric, Coeff>(const iir_df<Numeric, Coeff>& cp)
-      : poles(cp.poles.num_taps), zeros(cp.zeros.num_taps) {
+  iir_df<Numeric, Coeff>(const iir_df<Numeric, Coeff>& cp) : poles(cp.poles.num_taps), zeros(cp.zeros.num_taps) {
     int i;
     for (i = 0; i < cp.poles.num_taps; i++) poles.coeff[i] = cp.poles.coeff[i];
     for (i = 0; i < cp.zeros.num_taps; i++) zeros.coeff[i] = cp.zeros.coeff[i];

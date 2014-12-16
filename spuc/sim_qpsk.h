@@ -25,8 +25,7 @@ namespace SPUC {
 //! gaussian noise, and a BER tester
 //! \author Tony Kirke
 //!  \ingroup real_templates sim
-template <class Numeric>
-class sim_qpsk {
+template <class Numeric> class sim_qpsk {
  public:
   typedef typename fundtype<Numeric>::ftype CNumeric;
   typedef complex<CNumeric> complex_type;
@@ -76,15 +75,13 @@ class sim_qpsk {
     time = 0;
     freq = 0;
   }
-  void loop_init(float_type actual, float_type time_offset = 0,
-                 long adj_chan = 0) {
+  void loop_init(float_type actual, float_type time_offset = 0, long adj_chan = 0) {
     actual_over = actual;
     total_over = (int)actual_over;  // Nearest integer oversampling rate
     // Timing Increment (in 1/total_over samples) for tx
     tx_time_inc = total_over / actual_over;
     resample_over = actual_over;
-    var = sqrt(0.5 * actual_over) *
-          pow(10.0, -0.05 * snr);  // Unfiltered noise std dev
+    var = sqrt(0.5 * actual_over) * pow(10.0, -0.05 * snr);  // Unfiltered noise std dev
     tx_data_source = new quad_data<float_type>(total_over);
     freq_offset = new vco<float_type>;
     ADC = new a_d(6);
@@ -100,9 +97,8 @@ class sim_qpsk {
     count = 0;        // index of sample number at input rate
 
     // QPSK Receiver Setup
-    if (time)
-      resample_over *= 1.0001;  // 100 ppm timing error (internal clock faster
-                                // than reference)
+    if (time) resample_over *= 1.0001;  // 100 ppm timing error (internal clock faster
+                                        // than reference)
     // This should be related to total_over + offset
     symbol_nco_word = (long)floor(resample_over * (1 << 14));
     //	RECEIVER.rate_change.symbol_nco.reset_frequency(symbol_nco_word);

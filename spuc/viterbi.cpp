@@ -193,9 +193,7 @@ bool viterbi::depuncture(const long steal, long soft_in) {
           break;
       }
     }
-  } else {
-    viterbi_data = clock(soft_in);
-  }
+  } else { viterbi_data = clock(soft_in); }
   phase = !phase;
   if (depuncture_bit_number == steal) {
     depuncture_bit_number = 0;

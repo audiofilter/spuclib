@@ -9,8 +9,7 @@
 #include <spuc/butterworth_allpass.h>
 namespace SPUC {
 // from directory: spuc_double_templates
-template <class Numeric, class Coeff = float_type>
-class nested_shelf_allpass_2 {
+template <class Numeric, class Coeff = float_type> class nested_shelf_allpass_2 {
  protected:
   //! The 2 1st order allpass filters
   int Delay;
@@ -42,8 +41,7 @@ class nested_shelf_allpass_2 {
   }
   void set_hpf(bool h) { hpf = h; }
   //
-  void init(float_type fp, float_type k, float_type low_gain,
-            float_type high_gain) {
+  void init(float_type fp, float_type k, float_type low_gain, float_type high_gain) {
     std::vector<float_type> c0(1);
     std::vector<float_type> c1(1);
     butterworth_allpass(c0, c1, 2);  // ignore fp for butterworth func
@@ -93,9 +91,7 @@ class nested_shelf_allpass_2 {
     dly_input = D0.clock(input);
     out1 = A1.clock(dly_input);
 
-    if (hpf) {
-      sumx = kb * (out0 - out1) + kc * (out0 + out1);
-    } else {
+    if (hpf) { sumx = kb * (out0 - out1) + kc * (out0 + out1); } else {
       sumx = kb * (out0 + out1) + kc * (out0 - out1);
     }
     return (round(sumx, 1));

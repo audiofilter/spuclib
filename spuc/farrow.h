@@ -9,10 +9,10 @@
 namespace SPUC {
 //! \file
 //! \brief  Template Class for Farrow implementation of a ploynomial
-//interpolation using a FIR  filter.
+// interpolation using a FIR  filter.
 //
 //! \brief  Template Class for Farrow implementation of a ploynomial
-//interpolation using a FIR  filter.
+// interpolation using a FIR  filter.
 //
 //!   Farrow implementation of a polynomial interpolation
 //!   This covers 3 (orders) cases of interpolation
@@ -27,8 +27,7 @@ namespace SPUC {
 //! \author Tony Kirke
 //! \image html farrow.png
 //!  \ingroup templates fir interpolation
-template <class Numeric>
-class farrow {
+template <class Numeric> class farrow {
  public:
   long num_taps;
   std::vector<Numeric> coeff;
@@ -103,7 +102,7 @@ class farrow {
     return (output);
   }
   //! Rephase => recalculate coefficients and output for new offset (for
-  //upsampling)
+  // upsampling)
   Numeric rephase(float_type offset) {
     if (num_taps == 1)
       return (z[0]);
@@ -139,8 +138,7 @@ class farrow {
   void calculate_coeff4(void) {
     coeff[3] = -z[3] + ((Numeric)3) * z[2] - ((Numeric)3) * z[1] + z[0];
     coeff[2] = ((Numeric)3) * z[3] - ((Numeric)6) * z[2] + ((Numeric)3) * z[1];
-    coeff[1] =
-        ((Numeric)-2) * z[3] - ((Numeric)3) * z[2] + ((Numeric)6) * z[1] - z[0];
+    coeff[1] = ((Numeric)-2) * z[3] - ((Numeric)3) * z[2] + ((Numeric)6) * z[1] - z[0];
     coeff[0] = ((Numeric)6) * z[2];
   }
 };

@@ -15,13 +15,11 @@ namespace SPUC {
 //! \author Tony Kirke,  Copyright(c) 2005
 //! \author Tony Kirke
 //! \ingroup traits traits
-template <typename T>
-class quantized_type {
+template <typename T> class quantized_type {
  public:
   typedef long dtype;
 };
-template <typename T>
-class quantized_type<complex<T> > {
+template <typename T> class quantized_type<complex<T> > {
  public:
   typedef complex<long> dtype;
 };

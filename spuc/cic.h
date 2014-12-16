@@ -20,8 +20,7 @@ namespace SPUC {
 //! \ingroup templates fir interpolation
 //! \image html cic.gif
 //! \image latex cic.eps
-template <class Numeric>
-class cic {
+template <class Numeric> class cic {
  protected:
   std::vector<Numeric> diff;  //! Differentiators
   std::vector<Numeric> nacc;  //! Accumulators

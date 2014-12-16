@@ -19,12 +19,11 @@ namespace SPUC {
 //!  <I>Notes:</I>
 //!   Note that the BPE only cares about the phase of a vector, and not on the
 //!    actual vector magnitude.  This results in a degradation of the average
-//bpe
+// bpe
 //!    vector magnitude as Eb/No decreases.
 //! \author Tony Kirke
 //! \ingroup real_double_templates comm
-template <class Numeric, class Coeff = double>
-class bpe {
+template <class Numeric, class Coeff = double> class bpe {
   std::vector<complex<Numeric> > bit;  //! array containing previous inputs
   int quad_prev;                       //! Previous quadrant
   int oqtstate;                        //! quadrant cross-over indicator
@@ -52,8 +51,7 @@ class bpe {
 
     complex<Coeff> vx(0, 0);
 
-    for (i = 0; i < nbpe; i++)
-      vx += polar(1 / (float_type)nbpe, fq_angle(bit[i]));
+    for (i = 0; i < nbpe; i++) vx += polar(1 / (float_type)nbpe, fq_angle(bit[i]));
     out_angle4 = arg(vx);
     if (out_angle4 <= 0.) out_angle4 += TWOPI;
 

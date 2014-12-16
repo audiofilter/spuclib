@@ -6,18 +6,14 @@
 #include <spuc/spuc_types.h>
 #include <spuc/complex.h>
 namespace SPUC {
-template <typename T>
-class magsqr {
+template <typename T> class magsqr {
  public:
   static T magsqd(T x) { return (x * x); }
 };
 // partial specialization
-template <typename T>
-class magsqr<complex<T> > {
+template <typename T> class magsqr<complex<T> > {
  public:
-  static T magsqd(complex<T> x) {
-    return (real(x) * real(x) + imag(x) * imag(x));
-  }
+  static T magsqd(complex<T> x) { return (real(x) * real(x) + imag(x) * imag(x)); }
 };
 }  // namespace SPUC
 #endif

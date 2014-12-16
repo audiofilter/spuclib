@@ -24,8 +24,7 @@ namespace SPUC {
 //! \ingroup templates sim
 //! \image html vco.gif
 //! \image latex vco.eps
-template <class Numeric>
-class vco {
+template <class Numeric> class vco {
  protected:
   Numeric phase;
   Numeric acc;

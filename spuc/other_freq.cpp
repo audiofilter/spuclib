@@ -7,15 +7,13 @@
 #include <spuc/other_freq.h>
 namespace SPUC {
 
-void cic_freq(int rate, int order, int pts, double* w, int freq_off,
-              double inc) {
+void cic_freq(int rate, int order, int pts, double* w, int freq_off, double inc) {
   double db = 0;
   double sum = 0;
   double wf = inc * PI / (double)pts;
   for (int i = 0; i < pts; i++) {
     if (i != freq_off)
-      sum = (1.0 / rate) * sin(0.5 * wf * (i - freq_off) * rate) /
-            sin(0.5 * wf * (i - freq_off));
+      sum = (1.0 / rate) * sin(0.5 * wf * (i - freq_off) * rate) / sin(0.5 * wf * (i - freq_off));
     else
       sum = 0;
     //	  std::cout << "w1[" << i << "] = " << sum << "\n";

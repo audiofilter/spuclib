@@ -78,9 +78,7 @@ class viterbi {
   bool decode(long s0, long s1);
   void minimize_metrics() {
     long bestmetric = state[beststate].metric;
-    for (int i = 0; i < 64; i++) {
-      state[i].metric -= bestmetric;
-    }
+    for (int i = 0; i < 64; i++) { state[i].metric -= bestmetric; }
   }
   bool depuncture(const long steal, long soft_in);
 };

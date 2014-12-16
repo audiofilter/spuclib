@@ -16,8 +16,7 @@ namespace SPUC {
 //!  \author Tony Kirke,  Copyright(c) 2001
 //! \author Tony Kirke
 //! \ingroup template_functions misc
-template <class T>
-void toeplitz(vector<T> x, matrix<T>& A) {
+template <class T> void toeplitz(vector<T> x, matrix<T>& A) {
   int i, j;
   int k = 0;
   long N = x.size();

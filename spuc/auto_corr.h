@@ -14,8 +14,7 @@ namespace SPUC {
 //! \author Tony Kirke,  Copyright(c) 2001
 //! \author Tony Kirke
 //! \ingroup template_array_functions misc
-template <class T>
-std::vector<T> auto_corr(const std::vector<T>& x) {
+template <class T> std::vector<T> auto_corr(const std::vector<T>& x) {
   int i, j;
   T d;
   long N = x.size();

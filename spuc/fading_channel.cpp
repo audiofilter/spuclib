@@ -34,8 +34,7 @@ void fading_channel::generate_channel() {
 
   exp_decay.reset();
 
-  for (i = 0; i < taps; i++)
-    exp_decay.settap(i, tap_power[i] * tap_gain.Cgauss());
+  for (i = 0; i < taps; i++) exp_decay.settap(i, tap_power[i] * tap_gain.Cgauss());
 }
 // Convolution
 complex<float_type> fading_channel::update(const complex<float_type> signal) {

@@ -8,15 +8,14 @@
 namespace SPUC {
 //! \file
 //! \brief template class fir_decim based on FIR class, created to support
-//polyphase FIR interpolation
+// polyphase FIR interpolation
 //
 //! \brief template class fir_decim based on FIR class
 //
 //!  created to support polyphase FIR interpolation
 //! \author Tony Kirke
 //! \ingroup double_templates fir interpolation
-template <class Numeric, class Coeff = float_type>
-class fir_interp : public fir<Numeric, Coeff> {
+template <class Numeric, class Coeff = float_type> class fir_interp : public fir<Numeric, Coeff> {
   using fir<Numeric, Coeff>::num_taps;
   using fir<Numeric, Coeff>::coeff;
   using fir<Numeric, Coeff>::z;
@@ -49,11 +48,9 @@ class fir_interp : public fir<Numeric, Coeff> {
   }
 
   //! Constructor
-  fir_interp<Numeric, Coeff>(const char* i)
-      : fir<Numeric, Coeff>(i), phase(0), auto_mode(1) {}
+  fir_interp<Numeric, Coeff>(const char* i) : fir<Numeric, Coeff>(i), phase(0), auto_mode(1) {}
   fir_interp<Numeric, Coeff>(void) : phase(0), auto_mode(1) {}
-  fir_interp<Numeric, Coeff>(long n)
-      : fir<Numeric, Coeff>(n), phase(0), auto_mode(1) {}
+  fir_interp<Numeric, Coeff>(long n) : fir<Numeric, Coeff>(n), phase(0), auto_mode(1) {}
   void reset() {
     fir<Numeric, Coeff>::reset();
     phase = 0;

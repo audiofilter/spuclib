@@ -23,14 +23,13 @@ namespace SPUC {
 //! \ingroup templates equalizers
 //! \author Tony Kirke
 //! \ingroup templates comm
-template <class Numeric>
-class mle {
+template <class Numeric> class mle {
  public:
-  const long mlsd_span;   //! number of bits spanned by MLSD part of equaliser
-  const long dfe_span;    //! Number of bits spanned by DFE part of equaliser
-  const long n_states;    //! Number of states
-  const long n_branches;  //! Number of branches
-  Numeric fb_est;         //! Feedback estimator for RSDFSE
+  const long mlsd_span;              //! number of bits spanned by MLSD part of equaliser
+  const long dfe_span;               //! Number of bits spanned by DFE part of equaliser
+  const long n_states;               //! Number of states
+  const long n_branches;             //! Number of branches
+  Numeric fb_est;                    //! Feedback estimator for RSDFSE
   fir_adapt<Numeric, Numeric> cfir;  //! Channel impulse response
   std::vector<Numeric> cir_mlsd;
   std::vector<Numeric> cir_dfe;
@@ -41,11 +40,11 @@ class mle {
   std::vector<long> tmp_path;          // Temporary variable
   std::vector<float_type> tmp_weight;  // Temporary variable
   std::vector<long> path_symbol;
-  long phase_states;     //! Phase states for MLSD_CPM (not implemented)
-  long total_states;     //! for CPM total = n_states*phase_states! (not
-                         //implemented)
+  long phase_states;  //! Phase states for MLSD_CPM (not implemented)
+  long total_states;  //! for CPM total = n_states*phase_states! (not
+  // implemented)
   float_type phase_inc;  //! phase increment for MLSD_CPM (should divide evenly
-                         //into 360 degrees) (not implemented)
+  // into 360 degrees) (not implemented)
 
   //! Constructor (default to MLSE with no feedback)
   //! q=1 Binary, q=2 Quaternary

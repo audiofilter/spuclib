@@ -6,7 +6,7 @@
 #include <spuc/agc.h>
 namespace SPUC {
 //! \brief This is a simple sigma-delta type AGC for the variable rate QPSK
-//example
+// example
 //! \ingroup examples
 //! \author Tony Kirke, Copyright(c) 1993-1996
 //!

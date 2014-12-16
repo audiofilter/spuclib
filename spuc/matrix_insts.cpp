@@ -6,12 +6,10 @@ using namespace std;
 #include <spuc/matrix.h>
 namespace SPUC {
 
-template matrix<double> operator+(const matrix<double> &m1,
-                                  const matrix<double> &m2);
+template matrix<double> operator+(const matrix<double> &m1, const matrix<double> &m2);
 template matrix<double> operator+(const matrix<double> &m, double t);
 template matrix<double> operator+(double t, const matrix<double> &m);
-template matrix<double> operator-(const matrix<double> &m1,
-                                  const matrix<double> &m2);
+template matrix<double> operator-(const matrix<double> &m1, const matrix<double> &m2);
 template matrix<double> operator-(const matrix<double> &m, double t);
 template matrix<double> operator-(double t, const matrix<double> &m);
 template matrix<double> operator-(const matrix<double> &m);

@@ -16,9 +16,6 @@ namespace SPUC {
 //!   Hard_data - Hard decision for current symbol
 //! \author Tony Kirke
 //!	  \ingroup real_template_functions comm
-template <class T>
-T bpsk_dd_phase(complex<T> curr, complex<T> hard_data) {
-  return (-imag(curr) * real(hard_data));
-}
+template <class T> T bpsk_dd_phase(complex<T> curr, complex<T> hard_data) { return (-imag(curr) * real(hard_data)); }
 }  // namespace SPUC
 #endif

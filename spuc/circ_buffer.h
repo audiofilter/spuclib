@@ -14,8 +14,7 @@ namespace SPUC {
 //!  \author Tony Kirke,  Copyright(c) 2001
 //! \author Tony Kirke
 //! \ingroup templates misc
-template <class T>
-class circ_buffer {
+template <class T> class circ_buffer {
  protected:
   std::vector<T> buf;
   int len;
@@ -51,31 +50,24 @@ class circ_buffer {
   T check(int l) { return (buf[(ptr + len - l - 1) % len]); }
 };
 
-template <class T>
-circ_buffer<T>::circ_buffer(const circ_buffer<T>& A)
-    : buf(A.len) {
+template <class T> circ_buffer<T>::circ_buffer(const circ_buffer<T>& A) : buf(A.len) {
   len = A.len;
   ptr = A.ptr;
   for (int i = 0; i < len; i++) buf[i] = A.buf[i];
 }
 // copy constructor
-template <class T>
-circ_buffer<T>::circ_buffer(int len1)
-    : buf(len1) {
+template <class T> circ_buffer<T>::circ_buffer(int len1) : buf(len1) {
   len = len1;
   ptr = len - 1;
 }
 
-template <class T>
-circ_buffer<T>::circ_buffer(int len1, T init_value)
-    : buf(len1) {
+template <class T> circ_buffer<T>::circ_buffer(int len1, T init_value) : buf(len1) {
   len = len1;
   ptr = len - 1;
   for (int i = 0; i < len; i++) buf[i] = init_value;
 }
 
-template <class T>
-circ_buffer<T> circ_buffer<T>::operator=(circ_buffer<T>& A) {
+template <class T> circ_buffer<T> circ_buffer<T>::operator=(circ_buffer<T>& A) {
   if (this->len != A.size()) {
     // create room for A
     len = A.size();

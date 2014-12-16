@@ -20,8 +20,7 @@ namespace SPUC {
 //!   Note: Not normalized
 //! \author Tony Kirke
 //! \ingroup double_templates iir
-template <class Numeric, class Coeff = float_type>
-class iir_hpf1 {
+template <class Numeric, class Coeff = float_type> class iir_hpf1 {
  protected:
   Coeff gain;
   Numeric out;
@@ -30,9 +29,7 @@ class iir_hpf1 {
   quantiser<Numeric> Q;
 
  public:
-  iir_hpf1(Coeff A = 0, long b = 0) : gain(A), Q(b) {
-    previous_in = previous_out = out = (Numeric)0;
-  }
+  iir_hpf1(Coeff A = 0, long b = 0) : gain(A), Q(b) { previous_in = previous_out = out = (Numeric)0; }
   void set_coeff(Coeff A) { gain = A; }
   //! Constructor reading coefficient from a file.
   iir_hpf1(const char* file) : Q(0) {

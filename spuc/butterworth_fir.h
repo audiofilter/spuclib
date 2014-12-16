@@ -8,10 +8,10 @@
 namespace SPUC {
 //! \file
 //! \brief Calculate coefficients for FIR assuming butterworth frequency
-//response
+// response
 //
 //! \brief Calculate coefficients for FIR assuming butterworth frequency
-//response
+// response
 //
 //! \author Tony Kirke,  Copyright(c) 2001
 //! \author Tony Kirke

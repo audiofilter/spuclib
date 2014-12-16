@@ -8,10 +8,10 @@
 namespace SPUC {
 //! \file
 //! \brief This is a simple sigma-delta type AGC for the variable rate QPSK
-//example
+// example
 //
 //! \brief This is a simple sigma-delta type AGC for the variable rate QPSK
-//example
+// example
 //
 //! \author Tony Kirke
 //! \ingroup classes examples

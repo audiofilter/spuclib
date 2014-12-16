@@ -30,27 +30,23 @@ namespace SPUC {
 // complex<double> + complex<double> = complex<double>
 // complex<double> + complex<long>   = complex<double>
 // complex<long>   + complex<long>   = complex<long>
-template <typename T, typename D = double>
-class mixed_type {
+template <typename T, typename D = double> class mixed_type {
  public:
   typedef double dtype;
 };
-#define MIXED_MACRO(T1, T2, RESULT) \
-  template <>                       \
-  class mixed_type<T1, T2> {        \
-   public:                          \
-    typedef RESULT dtype;           \
+#define MIXED_MACRO(T1, T2, RESULT)      \
+  template <> class mixed_type<T1, T2> { \
+   public:                               \
+    typedef RESULT dtype;                \
   };
-#define DMIXED_MACRO(T1, T2, RESULT) \
-  template <>                        \
-  class mixed_type<T1, T2> {         \
-   public:                           \
-    typedef RESULT dtype;            \
-  };                                 \
-  template <>                        \
-  class mixed_type<T2, T1> {         \
-   public:                           \
-    typedef RESULT dtype;            \
+#define DMIXED_MACRO(T1, T2, RESULT)     \
+  template <> class mixed_type<T1, T2> { \
+   public:                               \
+    typedef RESULT dtype;                \
+  };                                     \
+  template <> class mixed_type<T2, T1> { \
+   public:                               \
+    typedef RESULT dtype;                \
   };
 //----------------------------------------------------------
 MIXED_MACRO(long, long, long)

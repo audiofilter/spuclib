@@ -8,18 +8,17 @@
 namespace SPUC {
 //! \file
 //! \brief template class running average filter consisting of a delay line,
-//adder and subtractor
+// adder and subtractor
 //
 //! \brief template class running average filter consisting of a delay line,
-//adder and subtractor
+// adder and subtractor
 //
 //! \author Tony Kirke
 //! \image html running_sum.png
 //! \ingroup templates fir
 //! \image html running_sum.gif
 //! \image latex running_sum.eps
-template <class Numeric>
-class running_sum {
+template <class Numeric> class running_sum {
  protected:
   Numeric result;
   delay<Numeric> z;

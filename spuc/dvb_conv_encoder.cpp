@@ -20,9 +20,7 @@ bool dvb_conv_encoder::clock() {
     conv_bit_number++;
     // XOR the masked register contents to get output data A
     a = reduce(conv_enc_u & g1, 7);
-  } else {
-    a = reduce(conv_enc_u & g2, 7);
-  }
+  } else { a = reduce(conv_enc_u & g2, 7); }
   conv_enc_phase = !conv_enc_phase;
   return (a);
 }

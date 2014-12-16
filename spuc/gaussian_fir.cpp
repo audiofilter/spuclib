@@ -10,8 +10,7 @@
 namespace SPUC {
 //! \file
 //! \brief calculates the sampled Gaussian filter impulse response
-void gaussian_fir(fir_coeff<float_type>& gaussf, float_type bt,
-                  float_type spb) {
+void gaussian_fir(fir_coeff<float_type>& gaussf, float_type bt, float_type spb) {
   // generate the sampled Gaussian filter impulse response
   // and transfer coefficients to "gaussf".
   // spb   = samples per bit (at full rate)

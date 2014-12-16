@@ -18,15 +18,14 @@
 namespace SPUC {
 //! \file
 //! \brief  Class for doing a simulation of an equalizer running at 1
-//sample/symbol
+// sample/symbol
 //
 //! \brief  Class for doing a simulation of an equalizer running at 1
-//sample/symbol
+// sample/symbol
 //
 //! \author Tony Kirke
 //! \ingroup complex_templates sim equalizers
-template <class Numeric>
-class baud_eq_env {
+template <class Numeric> class baud_eq_env {
  public:
   bpsk_ber_test* BER_mon;
   max_pn* tx_data_source;
@@ -61,8 +60,7 @@ class baud_eq_env {
     n = new noise;
 #endif
   }
-  void loop_init(long equalizer_type, long data_delay,
-                 float_type delay_spread) {
+  void loop_init(long equalizer_type, long data_delay, float_type delay_spread) {
     long mlse_len;
     int i;
     fir<Numeric, Numeric> cir(paths);
@@ -79,9 +77,7 @@ class baud_eq_env {
     multipaths->exp_decay.coeff[0] = 0.9;
     multipaths->exp_decay.coeff[1] = 0.1;
     // Copy from multipaths (change type if necessary!!!!!!!!!)
-    for (i = 0; i < paths; i++) {
-      cir.settap(i, multipaths->exp_decay.coeff[i]);
-    }
+    for (i = 0; i < paths; i++) { cir.settap(i, multipaths->exp_decay.coeff[i]); }
 
 #ifndef NEWNOISE
     n = new noise;

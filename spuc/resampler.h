@@ -27,8 +27,7 @@ namespace SPUC {
 //! The interpolator is a Lagrange interpolating FIR
 //! \author Tony Kirke
 //! \ingroup templates examples
-template <class Numeric>
-class resampler {
+template <class Numeric> class resampler {
  public:
   bool ready;
   long sample2;

@@ -22,8 +22,7 @@ namespace SPUC {
 //!  Template for 2nd order allpass filter<p>
 //!   The filter is assumed to be a  2nd order allpass section
 //!   of the form \f$ G(z) =  \frac{z^2 + b*z+a}{(a*z^2+b*z+1)} \f$
-template <class Numeric, class Coeff = float_type>
-class allpass_2nd {
+template <class Numeric, class Coeff = float_type> class allpass_2nd {
  protected:  // should be protected:
   long round_bits;
   Coeff b;

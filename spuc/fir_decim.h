@@ -14,8 +14,7 @@ namespace SPUC {
 //! created to support polyphase FIR decimation
 //! \author Tony Kirke
 //! \ingroup double_templates fir
-template <class Numeric, class Coeff = float_type>
-class fir_decim : public fir<Numeric, Coeff> {
+template <class Numeric, class Coeff = float_type> class fir_decim : public fir<Numeric, Coeff> {
   using SPUC::fir<Numeric, Coeff>::num_taps;
   using SPUC::fir<Numeric, Coeff>::coeff;
   using SPUC::fir<Numeric, Coeff>::z;

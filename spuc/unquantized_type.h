@@ -14,13 +14,11 @@ namespace SPUC {
 //! \author Tony Kirke,  Copyright(c) 2005
 //! \author Tony Kirke
 //! \ingroup traits traits
-template <typename T>
-class unquantized_type {
+template <typename T> class unquantized_type {
  public:
   typedef double dtype;
 };
-template <typename T>
-class unquantized_type<complex<T> > {
+template <typename T> class unquantized_type<complex<T> > {
  public:
   typedef complex<double> dtype;
 };

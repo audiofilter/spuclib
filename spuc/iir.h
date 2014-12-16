@@ -21,8 +21,7 @@ namespace SPUC {
 //! consisting of first and second order filter sections
 //! \author Tony Kirke
 //! \ingroup double_templates iir
-template <class Numeric, class Coeff = float_type>
-class iir {
+template <class Numeric, class Coeff = float_type> class iir {
  public:
   long order;
   long odd;
@@ -90,12 +89,8 @@ class iir {
         else {
           std::cout << "Error non-existent stage\n";
         }
-      } else {
-        sos[stage].set_round_bits(bits);
-      }
-    } else {
-      std::cout << "Error non-existent stage\n";
-    }
+      } else { sos[stage].set_round_bits(bits); }
+    } else { std::cout << "Error non-existent stage\n"; }
   }
   //! print coefficients
   void print() {
@@ -105,9 +100,7 @@ class iir {
   //! Clock in sample and get output.
   Numeric clock(Numeric in) {
     Numeric tmp = in;
-    for (int i = odd; i < n2; i++) {
-      tmp = sos[i - odd].clock(tmp);
-    }
+    for (int i = odd; i < n2; i++) { tmp = sos[i - odd].clock(tmp); }
     if (odd) tmp = fos.clock(tmp);
     mult_type g = gain * tmp;
     return (Q(g));

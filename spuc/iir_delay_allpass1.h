@@ -9,10 +9,10 @@
 namespace SPUC {
 //! \file
 //! \brief  Template Class for IIR filter consisting of 2 1st Order Allpass
-//sections
+// sections
 //
 //! \brief  Template Class for IIR filter consisting of 2 1st Order Allpass
-//sections
+// sections
 //
 //! The filter is a combination of 2 Allpass sections of
 //! the form  G(z) =  (a*z*z + 1)/(z*z+a)
@@ -26,8 +26,7 @@ namespace SPUC {
 //! \image latex allpass_iir.eps
 //! \author Tony Kirke
 //!  \ingroup double_templates iir
-template <class Numeric, class Coeff = float_type>
-class iir_delay_allpass1 {
+template <class Numeric, class Coeff = float_type> class iir_delay_allpass1 {
  protected:
   allpass_1<Numeric, Coeff> A0, A1;
   delay<Numeric> dly;
@@ -35,9 +34,7 @@ class iir_delay_allpass1 {
 
  public:
   iir_delay_allpass1(Coeff c0, Coeff c1, long delay = 2, long round_bits = 0)
-      : A0(c0, delay, round_bits),
-        A1(c1, delay, round_bits),
-        delay_size(delay) {
+      : A0(c0, delay, round_bits), A1(c1, delay, round_bits), delay_size(delay) {
     dly.set_size(delay);
   }
   //! Reset

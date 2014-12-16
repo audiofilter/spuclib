@@ -17,8 +17,7 @@ namespace SPUC {
 //! \author Tony Kirke
 //! \image html iir_comb.png
 //! \ingroup double_templates iir
-template <class Numeric, class Coeff = float_type>
-class iir_comb {
+template <class Numeric, class Coeff = float_type> class iir_comb {
  protected:
   Coeff acc_gain;
   Coeff in_gain;
@@ -30,8 +29,7 @@ class iir_comb {
   quantiser<Numeric> Q;
 
  public:
-  iir_comb(Coeff A = 0, long delay = 2, long b = 0)
-      : acc_gain(A), in_gain(1 - A), delay_size(delay), Q(b) {
+  iir_comb(Coeff A = 0, long delay = 2, long b = 0) : acc_gain(A), in_gain(1 - A), delay_size(delay), Q(b) {
     dly.set_size(delay);
     previous_in = previous_out = out = (Numeric)0;
   }

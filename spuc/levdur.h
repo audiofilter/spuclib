@@ -14,8 +14,7 @@ namespace SPUC {
 //! <font color="red"><i>Under construction!</i></font>
 //! \author Tony Kirke
 //! \ingroup template_array_functions misc
-template <class T>
-std::vector<T> levdur(const std::vector<T>& R) {
+template <class T> std::vector<T> levdur(const std::vector<T>& R) {
   long N = R.size();
   std::vector<T> a(N);
   T Pe;

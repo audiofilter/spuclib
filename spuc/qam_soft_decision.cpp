@@ -30,10 +30,9 @@ namespace SPUC {
 //! \brief  Soft-decision QAM Demapper for use with QAM_MOD class
 //
 //!  Returns an array of soft decision bits, array size is dependant on
-//modulation type
+// modulation type
 //!  <p>This de-maps the QAM used in 802.11A
-void qam_data_demap(long rate_index, complex<long> data_in,
-                    long soft_decision_level,
+void qam_data_demap(long rate_index, complex<long> data_in, long soft_decision_level,
                     std::vector<long>& viterbi_input) {
   switch (rate_index) {
     case 1:
@@ -53,23 +52,18 @@ void qam_data_demap(long rate_index, complex<long> data_in,
 //--------------------------------------------------------------------------
 // BPSK data demapping
 //--------------------------------------------------------------------------
-void bpsk_soft_decision(complex<long> data_in,
-                        std::vector<long>& viterbi_input) {
-  viterbi_input[0] = (real(data_in));
-}
+void bpsk_soft_decision(complex<long> data_in, std::vector<long>& viterbi_input) { viterbi_input[0] = (real(data_in)); }
 //--------------------------------------------------------------------------
 // QPSK data demapping
 //--------------------------------------------------------------------------
-void qpsk_soft_decision(complex<long> data_in,
-                        std::vector<long>& viterbi_input) {
+void qpsk_soft_decision(complex<long> data_in, std::vector<long>& viterbi_input) {
   viterbi_input[0] = real(data_in);
   viterbi_input[1] = imag(data_in);
 }
 //--------------------------------------------------------------------------
 // 16 QAM data demapping
 //--------------------------------------------------------------------------
-void qam16_soft_decision(complex<long> data_in, long soft_decision_level,
-                         std::vector<long>& viterbi_input) {
+void qam16_soft_decision(complex<long> data_in, long soft_decision_level, std::vector<long>& viterbi_input) {
   viterbi_input[0] = real(data_in);
   if (real(data_in) < 0)
     viterbi_input[1] = soft_decision_level + real(data_in);
@@ -84,8 +78,7 @@ void qam16_soft_decision(complex<long> data_in, long soft_decision_level,
 //--------------------------------------------------------------------------
 // 64 QAM data demapping
 //--------------------------------------------------------------------------
-void qam64_soft_decision(complex<long> data_in, long soft_decision_level,
-                         std::vector<long>& viterbi_input) {
+void qam64_soft_decision(complex<long> data_in, long soft_decision_level, std::vector<long>& viterbi_input) {
   // real part
   viterbi_input[0] = real(data_in);
   if (real(data_in) < 0)

@@ -21,8 +21,7 @@ namespace SPUC {
 //! \ingroup templates equalizers
 //! \author Tony Kirke
 //! \ingroup templates comm
-template <class Numeric>
-class rls {
+template <class Numeric> class rls {
  private:
   int n, m;
   matrix<Numeric> P;
@@ -36,8 +35,7 @@ class rls {
   /// Destructor
   ~rls() {}
   /// Constructor
-  rls(const int n, float_type alpha)
-      : P(n, n), k(n), w(n), u(n), ut(n), x(n), cfir(n) {
+  rls(const int n, float_type alpha) : P(n, n), k(n), w(n), u(n), ut(n), x(n), cfir(n) {
     ialpha = 1.0 / alpha;
     P = (Numeric)0.01;
     k = (Numeric)0;

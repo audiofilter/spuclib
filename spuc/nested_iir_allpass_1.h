@@ -8,8 +8,7 @@
 #include <spuc/allpass_2nd.h>
 namespace SPUC {
 
-template <class Numeric, class Coeff = float_type>
-class nested_iir_allpass_tmp {
+template <class Numeric, class Coeff = float_type> class nested_iir_allpass_tmp {
  protected:
   //! The 2 1st order allpass filters
   int Delay;
@@ -18,10 +17,7 @@ class nested_iir_allpass_tmp {
   Numeric prev_input;
 
  public:
-  nested_iir_allpass_2(Coeff c0, Coeff c1, Coeff b0, Coeff b1, Coeff k)
-      : A0(c0, c1), A1(b0, b1), D0(k) {
-    reset();
-  }
+  nested_iir_allpass_2(Coeff c0, Coeff c1, Coeff b0, Coeff b1, Coeff k) : A0(c0, c1), A1(b0, b1), D0(k) { reset(); }
   //! reset
   void reset() {
     A0.reset();

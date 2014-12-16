@@ -13,8 +13,7 @@
 #include <spuc/delay.h>
 namespace SPUC {
 
-template <class Numeric, class Coeff = float_type>
-class nested_allpass_1 {
+template <class Numeric, class Coeff = float_type> class nested_allpass_1 {
  protected:
   //! number of unit sample delays
   long size;

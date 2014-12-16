@@ -24,9 +24,7 @@ float_type erfc1(float_type x) {
   const float_type p = .3275911;
   float_type t, rf;
   t = 1. / (1. + p * x);
-  rf = (a1 * t + a2 * t * t + a3 * t * t * t + a4 * t * t * t * t +
-        a5 * t * t * t * t * t) *
-       exp(-x * x);
+  rf = (a1 * t + a2 * t * t + a3 * t * t * t + a4 * t * t * t * t + a5 * t * t * t * t * t) * exp(-x * x);
   return (rf);
 }
 float_type erf1(float_type x) { return (1 - erfc1(x)); }

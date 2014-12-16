@@ -14,7 +14,6 @@ namespace SPUC {
 //
 //! \author Tony Kirke
 //! \ingroup functions misc
-std::vector<complex<float_type> > find_roots(const std::vector<float_type>& a,
-                                             long n);
+std::vector<complex<float_type> > find_roots(const std::vector<float_type>& a, long n);
 }  // namespace SPUC
 #endif

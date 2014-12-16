@@ -18,8 +18,7 @@ double find_a(bool hpf, double f, double des_gain, double h, double l);
 //! \image html zolzer_allpass.png
 //! \author Tony Kirke
 //! \ingroup double_templates double_templates iir
-template <class Numeric, class Coeff = float_type>
-class shelf_allpass1 {
+template <class Numeric, class Coeff = float_type> class shelf_allpass1 {
  public:
   allpass_1<Numeric, Coeff> ap;
   Coeff low_gain;
@@ -37,9 +36,7 @@ class shelf_allpass1 {
     low_gain = pow(10.0, low_g_db / 20.0);
     high_gain = pow(10.0, high_g_db / 20.0);
     // std::cout << " gains " << low_gain << " " << high_gain << " ";
-    if (high_boost) {
-      high_gain = (high_gain - low_gain) / 2.0;
-    } else {
+    if (high_boost) { high_gain = (high_gain - low_gain) / 2.0; } else {
       low_gain = (low_gain - high_gain) / 2.0;
     }
 
@@ -62,9 +59,7 @@ class shelf_allpass1 {
 
   Numeric clock(Numeric x) {
     Numeric sum;
-    if (high_boost) {
-      sum = low_gain * x + high_gain * (x - ap.clock(x));
-    } else {
+    if (high_boost) { sum = low_gain * x + high_gain * (x - ap.clock(x)); } else {
       sum = high_gain * x + low_gain * (x + ap.clock(x));
     }
     return (sum);

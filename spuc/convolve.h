@@ -13,8 +13,7 @@ namespace SPUC {
 //! \author Tony Kirke,  Copyright(c) 2001
 //! \author Tony Kirke
 //! \ingroup template_array_functions misc
-template <class T>
-std::vector<T> convolve(const std::vector<T>& x, const std::vector<T>& y) {
+template <class T> std::vector<T> convolve(const std::vector<T>& x, const std::vector<T>& y) {
   int i, j;
   int M = x.size();
   int N = y.size();

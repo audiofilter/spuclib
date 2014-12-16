@@ -5,8 +5,7 @@
 #include <iostream>
 #include <spuc/vector.h>
 namespace SPUC {
-template <class T>
-std::ostream &operator<<(std::ostream &os, const vector<T> &v) {
+template <class T> std::ostream &operator<<(std::ostream &os, const vector<T> &v) {
   int sz = v.len();
   os << "[";
   for (int i = 0; i < sz; i++) {

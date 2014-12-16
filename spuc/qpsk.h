@@ -40,8 +40,7 @@ namespace SPUC {
 //! \ingroup real_templates comm examples
 //! \image html qpsk.gif
 //! \image latex qpsk.eps
-template <class Numeric>
-class qpsk {
+template <class Numeric> class qpsk {
  public:
   typedef typename fundtype<Numeric>::ftype CNumeric;
 
@@ -88,11 +87,7 @@ class qpsk {
   Numeric carrier_loop() { return (carrier_loop_out); }
   Numeric symbol_loop() { return (symbol_loop_out); }
   bool symclk(void) { return (symbol_clk_pls); }
-  qpsk(void)
-      : rcv_sqrt_rc(9),
-        final_baseband_delay(2),
-        hard_decision_delay(2),
-        timing_disc_delay(3) {
+  qpsk(void) : rcv_sqrt_rc(9), final_baseband_delay(2), hard_decision_delay(2), timing_disc_delay(3) {
     //! alpha = 0.35 root raised cosine fir
     fir_coeff<long> fir_c(rcv_sqrt_rc.num_taps);
     root_raised_cosine_quantized(fir_c, 0.35, 2, 8, -0.2);
@@ -166,9 +161,7 @@ class qpsk {
         //! Matched Filter out
         final_baseband = mf_out;
         //! Symbol discriminator
-        if (!nda)
-          timing_error =
-              dd_symbol(prev_sym, mf_out, hard_decision_prev, decision);
+        if (!nda) timing_error = dd_symbol(prev_sym, mf_out, hard_decision_prev, decision);
         //! Carrier discriminator
         carrier_error = qpsk_dd_phase(mf_out, decision);
         //! Symbol + timing loop filters

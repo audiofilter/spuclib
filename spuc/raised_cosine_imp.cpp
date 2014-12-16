@@ -6,8 +6,7 @@
 #include <spuc/spuc_defines.h>
 #include <spuc/raised_cosine_imp.h>
 namespace SPUC {
-float_type raised_cosine_imp(float_type alpha, float_type xin, float_type rate,
-                             long num_taps)
+float_type raised_cosine_imp(float_type alpha, float_type xin, float_type rate, long num_taps)
 //-----------------------------------------------------------------------
 //       Calculates the raised cosine pulse shape given the excess
 //       bandwidth value beta and the index.
@@ -22,9 +21,7 @@ float_type raised_cosine_imp(float_type alpha, float_type xin, float_type rate,
   if (x2 == 0) {
     x2 = 8 * alpha * (xindx / rate) * (xindx / rate);
     rc1 = sin(x1) * sin(alpha * x1) / x2;
-  } else {
-    rc1 = (sin(x1) * cos(alpha * x1)) / (x1 * x2);
-  }
+  } else { rc1 = (sin(x1) * cos(alpha * x1)) / (x1 * x2); }
   return (rc1);
 }
 }  // namespace SPUC

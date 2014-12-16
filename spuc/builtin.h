@@ -15,8 +15,7 @@ namespace SPUC {
 //
 //! \author Tony Kirke
 //! \ingroup types base
-template <class T>
-class builtin {
+template <class T> class builtin {
  public:
   // use template
   builtin();
@@ -57,63 +56,39 @@ class builtin {
 
 // members:
 
-template <class T>
-inline builtin<T>::builtin() {
-  value = 0;
-}
+template <class T> inline builtin<T>::builtin() { value = 0; }
 // These casts don't create problems when going to double
-template <class T>
-inline builtin<T>::builtin(long new_value) {
-  value = (T)new_value;
-}
-template <class T>
-inline builtin<T>::builtin(int new_value) {
-  value = (T)new_value;
-}
+template <class T> inline builtin<T>::builtin(long new_value) { value = (T)new_value; }
+template <class T> inline builtin<T>::builtin(int new_value) { value = (T)new_value; }
 // specialize this one later
-template <class T>
-inline builtin<T>::builtin(double new_value) {
-  value = (T)new_value;
-}
-template <class T>
-inline builtin<T>::builtin(float new_value) {
-  value = (T)new_value;
-}
+template <class T> inline builtin<T>::builtin(double new_value) { value = (T)new_value; }
+template <class T> inline builtin<T>::builtin(float new_value) { value = (T)new_value; }
 
-template <class T>
-inline builtin<T>::builtin(const builtin<T> &other) {
-  value = other.value;
-}
+template <class T> inline builtin<T>::builtin(const builtin<T> &other) { value = other.value; }
 
-template <class T>
-inline builtin<T>::~builtin(void) {}
+template <class T> inline builtin<T>::~builtin(void) {}
 
-template <class T>
-inline builtin<T> &builtin<T>::operator=(const builtin<T> &other) {
+template <class T> inline builtin<T> &builtin<T>::operator=(const builtin<T> &other) {
   value = other.value;
   return *this;
 }
 
-template <class T>
-inline builtin<T> &builtin<T>::operator+=(const builtin<T> &other) {
+template <class T> inline builtin<T> &builtin<T>::operator+=(const builtin<T> &other) {
   value += other.value;
   return *this;
 }
 
-template <class T>
-inline builtin<T> &builtin<T>::operator-=(const builtin<T> &other) {
+template <class T> inline builtin<T> &builtin<T>::operator-=(const builtin<T> &other) {
   value -= other.value;
   return *this;
 }
 
-template <class T>
-inline builtin<T> &builtin<T>::operator*=(const builtin<T> &other) {
+template <class T> inline builtin<T> &builtin<T>::operator*=(const builtin<T> &other) {
   value *= other.value;
   return *this;
 }
 
-template <class T>
-inline builtin<T> &builtin<T>::operator/=(const builtin<T> &other) {
+template <class T> inline builtin<T> &builtin<T>::operator/=(const builtin<T> &other) {
   value /= other.value;
   return *this;
 }
@@ -191,120 +166,66 @@ returns an rvalue.
 }
 */
 
-template <class T>
-inline const T *builtin<T>::operator&(void) const {
-  return &value;
-}
+template <class T> inline const T *builtin<T>::operator&(void) const { return &value; }
 
-template <class T>
-inline T *builtin<T>::operator&(void) {
-  return &value;
-}
+template <class T> inline T *builtin<T>::operator&(void) { return &value; }
 
 // non-members:
 // unary:
 
-template <class T>
-inline builtin<T> operator+(const builtin<T> &bi) {
-  return bi;
-}
+template <class T> inline builtin<T> operator+(const builtin<T> &bi) { return bi; }
 
-template <class T>
-inline builtin<T> operator-(const builtin<T> &bi) {
-  return -((T)bi);
-}
+template <class T> inline builtin<T> operator-(const builtin<T> &bi) { return -((T)bi); }
 
-template <class T>
-inline builtin<T> operator~(const builtin<T> &bi) {
-  return ~((T)bi);
-}
+template <class T> inline builtin<T> operator~(const builtin<T> &bi) { return ~((T)bi); }
 
-template <class T>
-inline builtin<T> operator!(const builtin<T> &bi) {
-  return !((T)bi);
-}
+template <class T> inline builtin<T> operator!(const builtin<T> &bi) { return !((T)bi); }
 
 // binary:
-template <class T>
-inline std::istream &operator>>(std::istream &s, builtin<T> &bi) {
+template <class T> inline std::istream &operator>>(std::istream &s, builtin<T> &bi) {
   T local_t;
   s >> local_t;
   bi = local_t;
   return s;
 }
 
-template <class T>
-inline std::ostream &operator<<(std::ostream &s, const builtin<T> &bi) {
+template <class T> inline std::ostream &operator<<(std::ostream &s, const builtin<T> &bi) {
   s << ((T)bi);
   return s;
 }
 
-template <class T>
-inline builtin<T> operator>>(const builtin<T> &bi, int i) {
-  return ((T)bi) >> i;
-}
+template <class T> inline builtin<T> operator>>(const builtin<T> &bi, int i) { return ((T)bi) >> i; }
 
-template <class T>
-inline builtin<T> operator<<(const builtin<T> &bi, int i) {
-  return ((T)bi) << i;
-}
-template <class T>
-inline builtin<T> operator>>(const builtin<T> &bi, long i) {
-  return ((T)bi) >> i;
-}
+template <class T> inline builtin<T> operator<<(const builtin<T> &bi, int i) { return ((T)bi) << i; }
+template <class T> inline builtin<T> operator>>(const builtin<T> &bi, long i) { return ((T)bi) >> i; }
 
-template <class T>
-inline builtin<T> operator<<(const builtin<T> &bi, long i) {
-  return ((T)bi) << i;
-}
+template <class T> inline builtin<T> operator<<(const builtin<T> &bi, long i) { return ((T)bi) << i; }
 
-template <class T>
-inline bool operator==(const builtin<T> &bi1, const builtin<T> &bi2) {
-  return ((T)bi1) == ((T)bi2);
-}
+template <class T> inline bool operator==(const builtin<T> &bi1, const builtin<T> &bi2) { return ((T)bi1) == ((T)bi2); }
 
-template <class T>
-inline bool operator!=(const builtin<T> &bi1, const builtin<T> &bi2) {
-  return ((T)bi1) != ((T)bi2);
-}
+template <class T> inline bool operator!=(const builtin<T> &bi1, const builtin<T> &bi2) { return ((T)bi1) != ((T)bi2); }
 
-template <class T>
-inline bool operator<(const builtin<T> &bi1, const builtin<T> &bi2) {
-  return ((T)bi1) < ((T)bi2);
-}
+template <class T> inline bool operator<(const builtin<T> &bi1, const builtin<T> &bi2) { return ((T)bi1) < ((T)bi2); }
 
-template <class T>
-inline bool operator<=(const builtin<T> &bi1, const builtin<T> &bi2) {
-  return ((T)bi1) <= ((T)bi2);
-}
+template <class T> inline bool operator<=(const builtin<T> &bi1, const builtin<T> &bi2) { return ((T)bi1) <= ((T)bi2); }
 
-template <class T>
-inline bool operator>(const builtin<T> &bi1, const builtin<T> &bi2) {
-  return ((T)bi1) > ((T)bi2);
-}
+template <class T> inline bool operator>(const builtin<T> &bi1, const builtin<T> &bi2) { return ((T)bi1) > ((T)bi2); }
 
-template <class T>
-inline bool operator>=(const builtin<T> &bi1, const builtin<T> &bi2) {
-  return ((T)bi1) >= ((T)bi2);
-}
+template <class T> inline bool operator>=(const builtin<T> &bi1, const builtin<T> &bi2) { return ((T)bi1) >= ((T)bi2); }
 
-template <class T>
-inline builtin<T> operator+(const builtin<T> &bi1, const builtin<T> &bi2) {
+template <class T> inline builtin<T> operator+(const builtin<T> &bi1, const builtin<T> &bi2) {
   return ((T)bi1) + ((T)bi2);
 }
 
-template <class T>
-inline builtin<T> operator-(const builtin<T> &bi1, const builtin<T> &bi2) {
+template <class T> inline builtin<T> operator-(const builtin<T> &bi1, const builtin<T> &bi2) {
   return ((T)bi1) - ((T)bi2);
 }
 
-template <class T>
-inline builtin<T> operator*(const builtin<T> &bi1, const builtin<T> &bi2) {
+template <class T> inline builtin<T> operator*(const builtin<T> &bi1, const builtin<T> &bi2) {
   return ((T)bi1) * ((T)bi2);
 }
 
-template <class T>
-inline builtin<T> operator/(const builtin<T> &bi1, const builtin<T> &bi2) {
+template <class T> inline builtin<T> operator/(const builtin<T> &bi1, const builtin<T> &bi2) {
   return ((T)bi1) / ((T)bi2);
 }
 
@@ -338,73 +259,53 @@ inline builtin<T> operator/(const builtin<T> &bi1, const builtin<T> &bi2) {
 */
 //--------------------------------------------------------------------------------------
 
-template <>
-inline builtin<double> operator<<(const builtin<double> &bi, int i) {
+template <> inline builtin<double> operator<<(const builtin<double> &bi, int i) {
   double x = (double)(1 << i) * (double)bi;
   return (builtin<double>(x));
 }
 
-template <>
-inline builtin<double> operator>>(const builtin<double> &bi, int i) {
+template <> inline builtin<double> operator>>(const builtin<double> &bi, int i) {
   double x = (double)(bi) / (double)(1 << i);
   return (builtin<double>(x));
 }
 
-template <>
-inline builtin<double> operator<<(const builtin<double> &bi, long i) {
+template <> inline builtin<double> operator<<(const builtin<double> &bi, long i) {
   double x = (double)(1 << i) * (double)bi;
   return (builtin<double>(x));
 }
 
-template <>
-inline builtin<double> operator>>(const builtin<double> &bi, long i) {
+template <> inline builtin<double> operator>>(const builtin<double> &bi, long i) {
   double x = (double)(bi) / (double)(1 << i);
   return (builtin<double>(x));
 }
 
-template <>
-inline builtin<float> operator<<(const builtin<float> &bi, int i) {
+template <> inline builtin<float> operator<<(const builtin<float> &bi, int i) {
   float x = (float)(1 << i) * (float)bi;
   return (builtin<float>(x));
 }
 
-template <>
-inline builtin<float> operator>>(const builtin<float> &bi, int i) {
+template <> inline builtin<float> operator>>(const builtin<float> &bi, int i) {
   float x = (float)(bi) / (float)(1 << i);
   return (builtin<float>(x));
 }
 
-template <>
-inline builtin<float> operator<<(const builtin<float> &bi, long i) {
+template <> inline builtin<float> operator<<(const builtin<float> &bi, long i) {
   float x = (float)(1 << i) * (float)bi;
   return (builtin<float>(x));
 }
 
-template <>
-inline builtin<float> operator>>(const builtin<float> &bi, long i) {
+template <> inline builtin<float> operator>>(const builtin<float> &bi, long i) {
   float x = (float)(bi) / (float)(1 << i);
   return (builtin<float>(x));
 }
 
 // partial specializations...
-template <>
-inline builtin<long>::builtin(double new_value) {
-  value = SPUC_TOLONG(new_value);
-}
-template <>
-inline builtin<int>::builtin(double new_value) {
-  value = SPUC_TOINT(new_value);
-}
+template <> inline builtin<long>::builtin(double new_value) { value = SPUC_TOLONG(new_value); }
+template <> inline builtin<int>::builtin(double new_value) { value = SPUC_TOINT(new_value); }
 
 // partial specializations...
-template <>
-inline builtin<long>::builtin(float new_value) {
-  value = SPUC_TOLONG(new_value);
-}
-template <>
-inline builtin<int>::builtin(float new_value) {
-  value = SPUC_TOINT(new_value);
-}
+template <> inline builtin<long>::builtin(float new_value) { value = SPUC_TOLONG(new_value); }
+template <> inline builtin<int>::builtin(float new_value) { value = SPUC_TOINT(new_value); }
 
 #ifndef PYSTE
 #define BUILTIN_OPS(T1, T2, RESULT)                                       \

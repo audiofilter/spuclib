@@ -13,8 +13,7 @@ namespace SPUC {
 //!  \file
 //!  \brief wrapper for boost shared array that keeps track of
 //!  number of elements
-template <class T>
-class smart_array : public std::unique_ptr<T[]> {
+template <class T> class smart_array : public std::unique_ptr<T[]> {
  public:
   //! Default constructor
   smart_array() {}

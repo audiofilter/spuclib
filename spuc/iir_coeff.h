@@ -42,10 +42,8 @@ class iir_coeff {
   void z_root_to_ab(std::vector<complex<float_type> >& z);
   void pz_to_ap();
   void ab_to_tf();
-  std::vector<float_type> p2_to_poly(
-      const std::vector<complex<float_type> >& ab);
-  std::vector<float_type> pz_to_poly(
-      const std::vector<complex<float_type> >& z);
+  std::vector<float_type> p2_to_poly(const std::vector<complex<float_type> >& ab);
+  std::vector<float_type> pz_to_poly(const std::vector<complex<float_type> >& z);
   complex<float_type> get_root(long i);
   complex<float_type> get_zero(long i);
   float_type get_a(long i);

@@ -9,10 +9,10 @@
 namespace SPUC {
 //! \file
 //! \brief A Class incorporating several symbol and carrier discriminators for
-//QPSK
+// QPSK
 //
 //! \brief A Class incorporating several symbol and carrier discriminators for
-//QPSK
+// QPSK
 //
 //! \author Tony Kirke
 //! \ingroup classes comm
@@ -25,12 +25,8 @@ class qpsk_discriminators {
   delay<complex<long> > hard_decision_delay, timing_disc_delay;
 
   void update(complex<long> data_in, complex<long> decision_in, int sym_pls);
-  void sample(complex<long> fmf_in, complex<long> data_in,
-              complex<long> decision_in, int sym_pls);
-  qpsk_discriminators(int bpsk = 0)
-      : hard_decision_delay(2), timing_disc_delay(3) {
-    bpsk_mode = bpsk;
-  }
+  void sample(complex<long> fmf_in, complex<long> data_in, complex<long> decision_in, int sym_pls);
+  qpsk_discriminators(int bpsk = 0) : hard_decision_delay(2), timing_disc_delay(3) { bpsk_mode = bpsk; }
   void set_mode(int bpsk = 0) { bpsk_mode = bpsk; }
   long cross_prod_afc(void);
   long quad(void);

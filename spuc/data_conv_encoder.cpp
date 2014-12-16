@@ -21,9 +21,7 @@ bool data_conv_encoder::conv_encoder(const long steal) {
         conv_enc_get_bit = 0;
       else
         conv_enc_get_bit = 1;
-    } else {
-      conv_enc_get_bit = 1;
-    }
+    } else { conv_enc_get_bit = 1; }
     if (conv_enc_phase)
       a = reduce(conv_enc_u & g1, 7);
     else
@@ -36,9 +34,7 @@ bool data_conv_encoder::conv_encoder(const long steal) {
       conv_bit_number++;
       // XOR the masked register contents to get output data A
       a = reduce(conv_enc_u & g1, 7);
-    } else {
-      a = reduce(conv_enc_u & g2, 7);
-    }
+    } else { a = reduce(conv_enc_u & g2, 7); }
   }
   conv_enc_phase = !conv_enc_phase;
   if (conv_enc_get_bit && steal == 2) conv_enc_phase = 1;

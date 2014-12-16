@@ -13,8 +13,7 @@ namespace SPUC {
 //! \author Tony Kirke
 //! \image html cutboost.png
 //! \ingroup double_templates iir
-template <class Numeric, class Coeff = float_type>
-class cutboost {
+template <class Numeric, class Coeff = float_type> class cutboost {
  public:
   allpass_2nd<Numeric, Coeff> ap;
   float_type k;
@@ -26,14 +25,12 @@ class cutboost {
     k = 1.0;
     g = 0.50;
   }
-  cutboost(float_type fp, float_type k2, float_type k0)
-      : ap(k2, -cos(TWOPI * fp) * (1 + k2)) {
+  cutboost(float_type fp, float_type k2, float_type k0) : ap(k2, -cos(TWOPI * fp) * (1 + k2)) {
     a = k2;
     k = (1 - k0) / (1 + k0);
     g = 0.5 * (1 + k0);
   }
-  cutboost(float_type fp, float_type k0)
-      : ap(0.9, -cos(TWOPI * fp) * (1 + 0.9)), k(1) {
+  cutboost(float_type fp, float_type k0) : ap(0.9, -cos(TWOPI * fp) * (1 + 0.9)), k(1) {
     a = 0.9;
     k = (1 - k0) / (1 + k0);
     g = 0.5 * (1 + k0);

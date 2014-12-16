@@ -10,9 +10,7 @@ namespace SPUC {
 double z_freqz_db(bool hpf, double f, double a, double h, double l) {
   double wf = f * PI;
   complex<double> hf;
-  if (!hpf) {
-    hf = h + l * (1 + (1.0 + polar(a, -wf)) / (a + polar(1.0, -wf)));
-  } else {
+  if (!hpf) { hf = h + l * (1 + (1.0 + polar(a, -wf)) / (a + polar(1.0, -wf))); } else {
     a = 1.0 / a;
     hf = h + l * (1 - (1.0 + polar(a, -wf)) / (a + polar(1.0, -wf)));
   }
@@ -34,8 +32,7 @@ double find_a(bool hpf, double f, double des_gain, double h, double l) {
     a = a + a_inc;
     g = z_freqz_db(hpf, f, a, h, l);
     new_error = (g - des_gain);
-    if (((new_error < 0) && (prev_error > 0)) ||
-        ((new_error > 0) && (prev_error < 0))) {
+    if (((new_error < 0) && (prev_error > 0)) || ((new_error > 0) && (prev_error < 0))) {
       // sign change in error
       a_inc = -a_inc / 2;
     } else if (fabs(new_error) > fabs(prev_error)) {

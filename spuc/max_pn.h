@@ -37,7 +37,7 @@ class max_pn {
     u = init;
   }
   //		max_pn(int g=0x074d, int len=1023, int init=-1) : gen(g),
-  //lenp1(len+1), u(init) {;}
+  // lenp1(len+1), u(init) {;}
   //! Reset
   void reset() { u = -1; }
   //! Get output (fast method)

@@ -16,15 +16,14 @@ namespace SPUC {
 //! \brief  Template Class for iir filter
 //
 //! \brief  Template Class for iir filter consisting of 1st order allpass
-//sections
+// sections
 //
 //! This is a halfband IIR filter with two branches of cascades of
 //! 1st order allpass sections
 //! \author Tony Kirke
 //! \image html iir_allpass1_cascade.png
 //! \ingroup double_templates iir
-template <class Numeric, class Coeff = float_type>
-class iir_allpass1_cascade {
+template <class Numeric, class Coeff = float_type> class iir_allpass1_cascade {
  public:
   long stages;
   allpass<Numeric, Coeff> A0;
@@ -63,17 +62,13 @@ class iir_allpass1_cascade {
       }
 #ifdef DEBUG
       std::cout << "fp = " << fp << ", Stages = " << stages << "\n";
-      for (int i = 0; i < j; i++)
-        std::cout << "a0[" << i << "]= " << a0[i] << " ";
+      for (int i = 0; i < j; i++) std::cout << "a0[" << i << "]= " << a0[i] << " ";
       std::cout << "\n";
-      for (int i = 0; i < j; i++)
-        std::cout << "a0c[" << i << "]= " << a0c[i] << " ";
+      for (int i = 0; i < j; i++) std::cout << "a0c[" << i << "]= " << a0c[i] << " ";
       std::cout << "\n";
-      for (int i = 0; i < k; i++)
-        std::cout << "a1[" << i << "]= " << a1[i] << " ";
+      for (int i = 0; i < k; i++) std::cout << "a1[" << i << "]= " << a1[i] << " ";
       std::cout << "\n";
-      for (int i = 0; i < k; i++)
-        std::cout << "a1c[" << i << "]= " << a1c[i] << " ";
+      for (int i = 0; i < k; i++) std::cout << "a1c[" << i << "]= " << a1c[i] << " ";
       std::cout << "\n";
 #endif
       A0.init(a0c, j);

@@ -36,9 +36,7 @@ signed char max_pn::out1() {
   else
     data = -1;
   i = u & gen;
-  for (ii = is = 0; ii < n; ii++) {
-    is = (is + ((i >> ii) & 1)) % 2;
-  }
+  for (ii = is = 0; ii < n; ii++) { is = (is + ((i >> ii) & 1)) % 2; }
   u += is;
   return (data);
 }

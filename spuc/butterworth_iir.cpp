@@ -12,13 +12,11 @@ namespace SPUC {
 //! Constructor, fcd = cut-off (1=sampling rate)
 //! ord = Filter order
 //! amax = attenuation at cut-off
-void butterworth_iir(iir_coeff& filt, float_type fcd, bool lpf = true,
-                     float_type amax = 3.0) {
+void butterworth_iir(iir_coeff& filt, float_type fcd, bool lpf = true, float_type amax = 3.0) {
   // amax - attenuation at cutoff
   const float_type ten = 10.0;
   long order = filt.order;
-  float_type epi = pow((float_type)(pow(ten, amax / ten) - 1.0),
-                       (float_type)(1. / (2.0 * order)));
+  float_type epi = pow((float_type)(pow(ten, amax / ten) - 1.0), (float_type)(1. / (2.0 * order)));
   // fcd - desired cutoff frequency (normalized)
   float_type wca = tan(0.5 * PI * fcd) / epi;
   // wca - pre-warped angular frequency
@@ -28,8 +26,7 @@ void butterworth_iir(iir_coeff& filt, float_type fcd, bool lpf = true,
   filt.convert_to_ab();
 }
 //! Calculate roots
-void butterworth_s(std::vector<complex<float_type> >& poles,
-                   std::vector<complex<float_type> >& zeros, bool lpf,
+void butterworth_s(std::vector<complex<float_type> >& poles, std::vector<complex<float_type> >& zeros, bool lpf,
                    float_type wp, long n, long n2) {
   complex<float_type> expj(float_type a);
   long l = 0;

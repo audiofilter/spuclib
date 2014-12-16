@@ -18,10 +18,8 @@ namespace SPUC {
 //! \image latex nda_timing.eps
 //! \author Tony Kirke
 //!	  \ingroup real_template_functions comm
-template <class T>
-T nda_symbol(complex<T> prev, complex<T> curr) {
-  return (real(prev) * (real(prev) - real(curr)) +
-          imag(prev) * (imag(prev) - imag(curr)));
+template <class T> T nda_symbol(complex<T> prev, complex<T> curr) {
+  return (real(prev) * (real(prev) - real(curr)) + imag(prev) * (imag(prev) - imag(curr)));
 }
 }  // namespace SPUC
 #endif

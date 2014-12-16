@@ -175,31 +175,16 @@ namespace SPUC {
 
 // one-line functions
 #ifndef MAX
-template <typename T>
-T MAX(T a, T b) {
-  return a < b ? b : a;
-}
+template <typename T> T MAX(T a, T b) { return a < b ? b : a; }
 #endif
 #ifndef MIN
-template <typename T>
-T MIN(T a, T b) {
-  return a < b ? a : b;
-}
+template <typename T> T MIN(T a, T b) { return a < b ? a : b; }
 #endif
 #ifndef ABS
-template <typename T>
-T ABS(T a) {
-  return a < 0 ? -a : a;
-}
+template <typename T> T ABS(T a) { return a < 0 ? -a : a; }
 #endif
-template <typename T>
-T SQR(T a) {
-  return a * a;
-}
-template <typename T>
-T SGN(T a) {
-  return a < 0 ? -(T)1 : (T)1;
-}
+template <typename T> T SQR(T a) { return a * a; }
+template <typename T> T SGN(T a) { return a < 0 ? -(T)1 : (T)1; }
 // macros
 
 //#define MAX(x,y)	((x) >= (y) ? (x) : (y))

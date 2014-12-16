@@ -82,9 +82,7 @@ void butterworth_fir(fir_coeff<float_type>& butfir, float_type spb) {
   for (j = 0; j < taps; j++) {
     ht = 0.0;
     t = TWOPI * j / (float_type)spbi;
-    for (i = 0; i < end; i++)
-      ht += lamda[i] * ::exp(-t * ak[i]) *
-            (xk[i] * cos(t * wk[i]) + yk[i] * sin(t * wk[i]));
+    for (i = 0; i < end; i++) ht += lamda[i] * ::exp(-t * ak[i]) * (xk[i] * cos(t * wk[i]) + yk[i] * sin(t * wk[i]));
     butfir.coeff[j] = TWOPI * ht;
   }
 }

@@ -13,8 +13,7 @@ namespace SPUC {
  * scalings for the forward transform; scalei1 and scalei2 are
  * the same for the inverse transform.
  */
-cfft::cfft(int size, float_type scalef1, float_type scalef2, float_type scalei1,
-           float_type scalei2) {
+cfft::cfft(int size, float_type scalef1, float_type scalef2, float_type scalei1, float_type scalei2) {
   int i, j, k;
   float_type t;
 
@@ -60,7 +59,7 @@ cfft::cfft(int size, float_type scalef1, float_type scalef2, float_type scalei1,
       t = float_type(bitrev[i << 1]) * PI / float_type(k);
       ww = CPLX(cos(t), sin(t));
       w[i] = conj(ww);  // force limiting of imag part if applic.
-      // cout << w[i] << "\n";
+                        // cout << w[i] << "\n";
     }
   }
 }
@@ -133,9 +132,7 @@ void cfft::fft_func(CPLX *buf, int iflag) {
     }
     buf0 = buf;
     for (j = 0; buf0 < bufe; ++j) {
-      if (iflag) {
-        zw = conj(w[j]);
-      } else {
+      if (iflag) { zw = conj(w[j]); } else {
         zw = w[j]; /* get w-factor */
       }
       buf2 = buf0 + k;

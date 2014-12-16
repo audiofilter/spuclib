@@ -13,8 +13,7 @@ namespace SPUC {
 //
 //! \author Tony Kirke
 //! \ingroup n_templates sim
-template <int M, int L = 12>
-class fbool_nco {
+template <int M, int L = 12> class fbool_nco {
  public:
   bool phase;
   //  char v[20];

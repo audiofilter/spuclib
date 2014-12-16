@@ -25,27 +25,18 @@ typedef float float_type;
 
 // Class Declarations
 class bit;
-template <class T>
-class conjr;
-template <class T>
-class magsqr;
-template <class T>
-class signbitr;
-template <class T>
-class quantizer;
+template <class T> class conjr;
+template <class T> class magsqr;
+template <class T> class signbitr;
+template <class T> class quantizer;
 
-template <class T>
-class builtin;
+template <class T> class builtin;
 #ifndef USE_STD_COMPLEX
-template <typename T>
-T conj(T in);
-template <class T>
-class complex;
+template <typename T> T conj(T in);
+template <class T> class complex;
 #endif
-template <class T>
-class matrix;
-template <class T>
-class vector;
+template <class T> class matrix;
+template <class T> class vector;
 
 // Shortcut Typedefs
 typedef builtin<float> Float;

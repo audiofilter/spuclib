@@ -8,15 +8,14 @@
 namespace SPUC {
 //! \file
 //! \brief Calculate coefficients for lowpass FIR assuming equiripple frequency
-//response
+// response
 //
 //! \brief Calculate coefficients for lowpass FIR assuming equiripple frequency
-//response
+// response
 //
 //! \author Tony Kirke,  Copyright(c) 2001
 //! \author Tony Kirke
 //! \ingroup functions fir
-void create_remez_lpfir(fir_coeff<float_type>& remezfir, float_type edge,
-                        float_type fx, float_type wtx);
+void create_remez_lpfir(fir_coeff<float_type>& remezfir, float_type edge, float_type fx, float_type wtx);
 }  // namespace SPUC
 #endif

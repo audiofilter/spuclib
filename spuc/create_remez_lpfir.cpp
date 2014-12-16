@@ -10,9 +10,9 @@
 #include <spuc/create_remez_lpfir.h>
 namespace SPUC {
 //! \brief calculates the coefficients for lowpass FIR based on Remez
-//constraints
-void create_remez_lpfir(fir_coeff<float_type>& remezfir, float_type pass_edge,
-                        float_type stop_edge, float_type stop_weight) {
+// constraints
+void create_remez_lpfir(fir_coeff<float_type>& remezfir, float_type pass_edge, float_type stop_edge,
+                        float_type stop_weight) {
   bool ok = true;
   std::vector<float_type> e1(4);
   std::vector<float_type> f1(4);

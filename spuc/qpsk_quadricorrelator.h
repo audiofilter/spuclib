@@ -19,8 +19,7 @@ namespace SPUC {
 //!	  \ingroup real_template_functions comm
 //! \image html qpsk_quadricorrelator.gif
 //! \image latex qpsk_quadricorrelator.eps
-template <class T>
-T qpsk_quadricorrelator(complex<T> hard_data, complex<T> prev) {
+template <class T> T qpsk_quadricorrelator(complex<T> hard_data, complex<T> prev) {
   return (real(hard_data) * imag(prev) - imag(hard_data) * real(prev));
 }
 }  // namespace SPUC

@@ -48,8 +48,7 @@ namespace SPUC {
  * CADLINC, Inc., Palo Alto, California
  *******************************************************************************/
 
-std::vector<complex<float_type> > find_roots(const std::vector<float_type>& a,
-                                             long n) {
+std::vector<complex<float_type> > find_roots(const std::vector<float_type>& a, long n) {
   const long max_iter = 100;
   const long fig = 10;
   int i, j;
@@ -68,8 +67,7 @@ std::vector<complex<float_type> > find_roots(const std::vector<float_type>& a,
   int index = 0;
 
   /* Zero elements with negative indices */
-  b[2 - 1] = b[2 - 2] = c[2 - 1] = c[2 - 2] = d[2 - 1] = d[2 - 2] = e[2 - 1] =
-      e[2 - 2] = h[2 - 1] = h[2 - 2] = 0.0;
+  b[2 - 1] = b[2 - 2] = c[2 - 1] = c[2 - 2] = d[2 - 1] = d[2 - 2] = e[2 - 1] = e[2 - 2] = h[2 - 1] = h[2 - 2] = 0.0;
 
   /* Copy polynomial coefficients to working storage */
   int m = n;
@@ -134,9 +132,7 @@ ITERATE:
       c[2 + j] = b[2 + j] - p * c[2 + j - 1] - q * c[2 + j - 2];
     }
     if ((h[2 + n - 1] != 0.0) && (b[2 + n - 1] != 0.0)) {
-      if (fabs(h[2 + n - 1] / b[2 + n - 1]) >= K) {
-        b[2 + n] = h[2 + n] - q * b[2 + n - 2];
-      }
+      if (fabs(h[2 + n - 1] / b[2 + n - 1]) >= K) { b[2 + n] = h[2 + n] - q * b[2 + n - 2]; }
       if (b[2 + n] == 0.0) goto QADRTIC;
       if (K < fabs(h[2 + n] / b[2 + n])) goto QADRTIC;
     }

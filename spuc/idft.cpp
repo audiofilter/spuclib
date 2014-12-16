@@ -20,9 +20,7 @@ void idft(std::vector<complex<float_type> > y, int n) {
   /*  calculate the w values recursively */
   //  complex<float_type> w_inc = expj(TWOPI/n);
   //  complex<float_type> w_x = complex<float_type>(1,0);
-  for (j = 0; j < n; j++) {
-    x[j] = y[j];
-  }
+  for (j = 0; j < n; j++) { x[j] = y[j]; }
 
   /*  start inverse fft */
   for (l = 0; l < n; l++) {
@@ -52,9 +50,7 @@ void dft(std::vector<complex<float_type> > y, int n) {
   /*  start inverse fft */
   for (l = 0; l < n; l++) {
     y[l] = 0;
-    for (j = 0; j < n; j++) {
-      y[l] += x[j] * expj(-TWOPI * j * l / n);
-    }
+    for (j = 0; j < n; j++) { y[l] += x[j] * expj(-TWOPI * j * l / n); }
   }
 }
 }  // namespace SPUC

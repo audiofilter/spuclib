@@ -4,8 +4,7 @@
 
 // Copyright (c) 2014, Tony Kirke. License: MIT License (http://www.opensource.org/licenses/mit-license.php)
 namespace SPUC {
-template <class T>
-class vector {
+template <class T> class vector {
  public:
   vector() { ; }
   vector(int size) { resize(size); }
@@ -19,14 +18,10 @@ class vector {
   inline int size() const { return data.size(); }
 
   inline void reset() {
-    for (int i = 0; i < data.size(); i++) {
-      data[i] = T(0);
-    }
+    for (int i = 0; i < data.size(); i++) { data[i] = T(0); }
   }
   inline void ones() {
-    for (int i = 0; i < data.size(); i++) {
-      data[i] = T(1);
-    }
+    for (int i = 0; i < data.size(); i++) { data[i] = T(1); }
   }
 
   inline T operator[](int i) const { return data[i]; }

@@ -29,10 +29,8 @@ namespace SPUC {
  * -------
  * std::vector<float_type> filt    - Impulse response of final filter [numtaps]
  *************************************************************************/
-bool remez_fir::remez(std::vector<float_type>& filt, int numtaps, int numband,
-                      std::vector<float_type>& bands,
-                      const std::vector<float_type>& des,
-                      const std::vector<float_type>& weight, int type) {
+bool remez_fir::remez(std::vector<float_type>& filt, int numtaps, int numband, std::vector<float_type>& bands,
+                      const std::vector<float_type>& des, const std::vector<float_type>& weight, int type) {
   bool ok = true;
   float_type c;
   int i;
@@ -44,8 +42,7 @@ bool remez_fir::remez(std::vector<float_type>& filt, int numtaps, int numband,
   // Predict dense grid size in advance for array sizes
   int gridSize = 0;
   for (i = 0; i < numband; i++) {
-    gridSize += (int)floor(
-        0.5 + 2 * r * GRIDDENSITY * (bands[2 * i + 1] - bands[2 * i]));
+    gridSize += (int)floor(0.5 + 2 * r * GRIDDENSITY * (bands[2 * i + 1] - bands[2 * i]));
   }
   if (symmetry == NEGATIVE) gridSize--;
   if (gridSize < 1) {
@@ -64,8 +61,7 @@ bool remez_fir::remez(std::vector<float_type>& filt, int numtaps, int numband,
   std::vector<int> ext(r + 1);
 
   // Create dense frequency grid
-  createDenseGrid(r, numtaps, numband, bands, des, weight, gridSize, grid, d, w,
-                  symmetry);
+  createDenseGrid(r, numtaps, numband, bands, des, weight, gridSize, grid, d, w, symmetry);
 
   // initial guess
   for (i = 0; i <= r; i++) ext[i] = i * (gridSize - 1) / r;
@@ -104,8 +100,7 @@ bool remez_fir::remez(std::vector<float_type>& filt, int numtaps, int numband,
     // calc y
     y = calc_y(r, ext, d, w, ad);
     // calculate error array
-    for (i = 0; i < gridSize; i++)
-      e[i] = w[i] * (d[i] - gee(grid[i], r, ad, x, y));
+    for (i = 0; i < gridSize; i++) e[i] = w[i] * (d[i] - gee(grid[i], r, ad, x, y));
     search(r, ext, gridSize, e);
     if (isDone(r, ext, e)) break;
   }
@@ -149,13 +144,10 @@ bool remez_fir::remez(std::vector<float_type>& filt, int numtaps, int numband,
  * also creates the Desired Frequency Response function (d[]) and
  * the Weight function (w[]) on that dense grid
  *******************/
-void remez_fir::createDenseGrid(int r, int numtaps, int numband,
-                                std::vector<float_type>& bands,
-                                const std::vector<float_type>& des,
-                                const std::vector<float_type>& weight,
-                                int gridSize, std::vector<float_type>& grid,
-                                std::vector<float_type>& d,
-                                std::vector<float_type>& w, int symmetry) {
+void remez_fir::createDenseGrid(int r, int numtaps, int numband, std::vector<float_type>& bands,
+                                const std::vector<float_type>& des, const std::vector<float_type>& weight, int gridSize,
+                                std::vector<float_type>& grid, std::vector<float_type>& d, std::vector<float_type>& w,
+                                int symmetry) {
   float_type lowf, highf;
   float_type delf = 0.5 / (GRIDDENSITY * r);
 
@@ -182,14 +174,12 @@ void remez_fir::createDenseGrid(int r, int numtaps, int numband,
 
   // Similar to above, if odd symmetry, last grid point can't be .5
   // - but, if there are even taps, leave the last grid point at .5
-  if ((symmetry == NEGATIVE) && (grid[gridSize - 1] > (0.5 - delf)) &&
-      ((numtaps % 2) != 0)) {
+  if ((symmetry == NEGATIVE) && (grid[gridSize - 1] > (0.5 - delf)) && ((numtaps % 2) != 0)) {
     grid[gridSize - 1] = 0.5 - delf;
   }
 }
 // Dee function in Parks & Burrus
-std::vector<float_type> remez_fir::calc_d(int r,
-                                          const std::vector<float_type>& x) {
+std::vector<float_type> remez_fir::calc_d(int r, const std::vector<float_type>& x) {
   std::vector<float_type> d(r);
   int i, j, k;
   float_type denom, xi;
@@ -206,10 +196,8 @@ std::vector<float_type> remez_fir::calc_d(int r,
   }
   return d;
 }
-std::vector<float_type> remez_fir::calc_y(int r, const std::vector<int>& ext,
-                                          const std::vector<float_type>& d,
-                                          const std::vector<float_type>& w,
-                                          const std::vector<float_type>& ad) {
+std::vector<float_type> remez_fir::calc_y(int r, const std::vector<int>& ext, const std::vector<float_type>& d,
+                                          const std::vector<float_type>& w, const std::vector<float_type>& ad) {
   std::vector<float_type> y(r);
   float_type sign, dev, denom, numer;
   int i;
@@ -235,9 +223,7 @@ std::vector<float_type> remez_fir::calc_y(int r, const std::vector<int>& ext,
 /*********************
  * gee (see p301 Parks & Burrus) Digital Filter Design
  *********************/
-float_type remez_fir::gee(float_type freq, int r,
-                          const std::vector<float_type>& ad,
-                          const std::vector<float_type>& x,
+float_type remez_fir::gee(float_type freq, int r, const std::vector<float_type>& ad, const std::vector<float_type>& x,
                           const std::vector<float_type>& y) {
   int i;
   float_type c;
@@ -271,8 +257,7 @@ float_type remez_fir::gee(float_type freq, int r,
  *    of the first/last extremum
  ************************/
 
-void remez_fir::search(int r, std::vector<int>& ext, int gridSize,
-                       const std::vector<float_type>& e) {
+void remez_fir::search(int r, std::vector<int>& ext, int gridSize, const std::vector<float_type>& e) {
   bool up, alt;
   std::vector<int> foundExt(gridSize); /* Array of found extremals */
   int k = 0;
@@ -280,8 +265,7 @@ void remez_fir::search(int r, std::vector<int>& ext, int gridSize,
   //  Copy found extremals from ext[]
   for (i = 0; i <= r; i++) foundExt[i] = ext[i];
   // Check for extremum at 0.
-  if (((e[0] > 0.0) && (e[0] > e[1])) || ((e[0] < 0.0) && (e[0] < e[1])))
-    foundExt[k++] = 0;
+  if (((e[0] > 0.0) && (e[0] > e[1])) || ((e[0] < 0.0) && (e[0] < e[1]))) foundExt[k++] = 0;
 
   // Check for extrema inside dense grid
   for (i = 1; i < gridSize - 1; i++) {
@@ -292,9 +276,7 @@ void remez_fir::search(int r, std::vector<int>& ext, int gridSize,
 
   // Check for extremum at 0.5
   int j = gridSize - 1;
-  if (((e[j] > 0.0) && (e[j] > e[j - 1])) ||
-      ((e[j] < 0.0) && (e[j] < e[j - 1])))
-    foundExt[k++] = j;
+  if (((e[j] > 0.0) && (e[j] > e[j - 1])) || ((e[j] < 0.0) && (e[j] < e[j - 1]))) foundExt[k++] = j;
 
   // Remove extra extremals
   int extra = k - (r + 1);
@@ -305,8 +287,7 @@ void remez_fir::search(int r, std::vector<int>& ext, int gridSize,
     l = 0;
     alt = true;
     for (j = 1; j < k; j++) {
-      if (fabs(e[foundExt[j]]) < fabs(e[foundExt[l]]))
-        l = j;  // new smallest error.
+      if (fabs(e[foundExt[j]]) < fabs(e[foundExt[l]])) l = j;  // new smallest error.
       if (up && (e[foundExt[j]] < 0.0))
         up = false;  // switch to a minima
       else if (!up && (e[foundExt[j]] > 0.0))
@@ -340,8 +321,7 @@ void remez_fir::search(int r, std::vector<int>& ext, int gridSize,
  * Checks to see if the error function is small enough to consider
  * the result to have converged.
  ********************/
-bool remez_fir::isDone(int r, const std::vector<int>& ext,
-                       const std::vector<float_type>& e) {
+bool remez_fir::isDone(int r, const std::vector<int>& ext, const std::vector<float_type>& e) {
   int i;
   float_type min, max, current;
   min = max = fabs(e[ext[0]]);

@@ -8,8 +8,7 @@
 #include <spuc/spuc_math.h>
 namespace SPUC {
 
-template <typename T>
-void other_freq(T& AP, int pts, double* w, int freq_off, double inc) {
+template <typename T> void other_freq(T& AP, int pts, double* w, int freq_off, double inc) {
   double d[pts];
 #ifdef MONO_ONLY
   double imp = 1;
@@ -51,8 +50,7 @@ void other_freq(T& AP, int pts, double* w, int freq_off, double inc) {
   }
 }
 
-template <typename T>
-void fir_freq(T& MF, int pts, double* w, int freq_off, double inc) {
+template <typename T> void fir_freq(T& MF, int pts, double* w, int freq_off, double inc) {
   double t;
   double w_inc = inc * PI / (float)pts;
   complex<double> z_inc, nom;
@@ -73,8 +71,7 @@ void fir_freq(T& MF, int pts, double* w, int freq_off, double inc) {
     w[i] = t;
   }
 }
-void cic_freq(int rate, int order, int pts, double* w, int freq_off,
-              double inc);
+void cic_freq(int rate, int order, int pts, double* w, int freq_off, double inc);
 
 /*
  template <typename T> void filt_freq(T& MF, int pts, int bits, double* w,
@@ -99,9 +96,7 @@ double inc) {
 }
 */
 
-template <typename T>
-void iir_freq(T& MF, bool hpf, int pts, int bits, double* w, int freq_off,
-              double inc) {
+template <typename T> void iir_freq(T& MF, bool hpf, int pts, int bits, double* w, int freq_off, double inc) {
   double h0;
   MF.quantize(bits);
   h0 = MF.freqz_mag(0);
@@ -123,8 +118,7 @@ void iir_freq(T& MF, bool hpf, int pts, int bits, double* w, int freq_off,
   }
 }
 
-template <typename T>
-void other_freq(T& AP, int pts, double* w) {
+template <typename T> void other_freq(T& AP, int pts, double* w) {
   double d[pts];
   double imp = 1;
   double dsum = 0;
@@ -154,8 +148,7 @@ void other_freq(T& AP, int pts, double* w) {
   }
 }
 
-template <typename T>
-void filt_freq(T& MF, int pts, int bits, double* w) {
+template <typename T> void filt_freq(T& MF, int pts, int bits, double* w) {
   double h0;
   MF.quantize(bits);
   h0 = MF.freqz_mag(0);

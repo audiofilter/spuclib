@@ -16,7 +16,7 @@ namespace SPUC {
 
 //! \file
 //! \brief  Template Class for iir filter consisting of 1st order allpass
-//sections
+// sections
 //
 //! This is a halfband IIR filter with two branches of cascades of
 //! 1st order allpass sections
@@ -24,8 +24,7 @@ namespace SPUC {
 //! \image html iir_allpass1_cascade.png
 //! \author Tony Kirke
 //! \ingroup double_templates double_templates iir
-template <class Numeric, class Coeff = float_type>
-class iir_allpass_variable_cascade {
+template <class Numeric, class Coeff = float_type> class iir_allpass_variable_cascade {
  public:
   long stages;
   allpass<Numeric, Coeff> A0;
@@ -40,8 +39,7 @@ class iir_allpass_variable_cascade {
 
  public:
   //! n = Filter stages
-  iir_allpass_variable_cascade(float_type fp = 0, int n = 1, int dly = 2,
-                               int coeff_bits = 0) {
+  iir_allpass_variable_cascade(float_type fp = 0, int n = 1, int dly = 2, int coeff_bits = 0) {
     int j = 0;
     int k = 0;
     hpf = false;
@@ -145,9 +143,7 @@ class iir_allpass_variable_cascade {
     out1 = prev_input.last();
 #endif
     //	std::cout << out1 << "\n";
-    if (hpf) {
-      return (round((out0 - out1), 1));
-    } else {
+    if (hpf) { return (round((out0 - out1), 1)); } else {
       return (round((out0 + out1), 1));
     }
   }

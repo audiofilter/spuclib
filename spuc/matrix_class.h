@@ -4,8 +4,7 @@
 
 // Copyright (c) 2014, Tony Kirke. License: MIT License (http://www.opensource.org/licenses/mit-license.php)
 namespace SPUC {
-template <class T>
-class matrix {
+template <class T> class matrix {
  public:
   matrix() { datasize = rows = cols = 0; }
   matrix(int inrow, int incol) { resize(inrow, incol); }

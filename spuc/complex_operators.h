@@ -4,105 +4,93 @@
 // Copyright (c) 2014, Tony Kirke. License: MIT License (http://www.opensource.org/licenses/mit-license.php)
 namespace SPUC {
 // forward declarations
-template <class T>
-class base_type;
-template <typename T>
-typename base_type<T>::btype magsq(T in);
+template <class T> class base_type;
+template <typename T> typename base_type<T>::btype magsq(T in);
 //----------------------T1 + T2 operators----------------------------------
 //!
-template <typename T1, typename T2>
-inline bool operator==(complex<T1> r, complex<T2> l) {
+template <typename T1, typename T2> inline bool operator==(complex<T1> r, complex<T2> l) {
   return ((real(r) == real(l)) && (imag(r) == imag(l)));
 }
 
 ///!
-template <typename T1, typename T2>
-inline bool operator<=(complex<T1> r, complex<T2> l) {
+template <typename T1, typename T2> inline bool operator<=(complex<T1> r, complex<T2> l) {
   return ((real(r) <= real(l)) && (imag(r) <= imag(l)));
 }
 ///!
 
-template <typename T1, typename T2>
-inline bool operator<(complex<T1> r, complex<T2> l) {
+template <typename T1, typename T2> inline bool operator<(complex<T1> r, complex<T2> l) {
   return ((real(r) < real(l)) && (imag(r) < imag(l)));
 }
 ///!
-template <typename T1, typename T2>
-inline bool operator>=(complex<T1> r, complex<T2> l) {
+template <typename T1, typename T2> inline bool operator>=(complex<T1> r, complex<T2> l) {
   return ((real(r) >= real(l)) && (imag(r) >= imag(l)));
 }
 ///!
-template <typename T1, typename T2>
-inline bool operator>(complex<T1> r, complex<T2> l) {
+template <typename T1, typename T2> inline bool operator>(complex<T1> r, complex<T2> l) {
   return ((real(r) > real(l)) && (imag(r) > imag(l)));
 }
 
 //!
-template <typename T1, typename T2>
-inline bool operator!=(complex<T1> r, complex<T2> l) {
+template <typename T1, typename T2> inline bool operator!=(complex<T1> r, complex<T2> l) {
   return ((real(r) != real(l)) || (imag(r) != imag(l)));
 }
 // Combination operators, order is important because inline
 /*
 don't repeate these ones.....
 */
-#define COMPLEX_SINGOP(T1, T2, RESULT)                                        \
-  complex<RESULT> inline operator-(complex<T1> r, complex<T2> l) {            \
-    ASP_C(cadd_count)                                                         \
-    return complex<RESULT>((RESULT)r.re - (RESULT)l.re,                       \
-                           (RESULT)r.im - (RESULT)l.im);                      \
-  }                                                                           \
-  complex<RESULT> inline operator-(T1 r, complex<T2> l) {                     \
-    ASP_C(hcadd_count)                                                        \
-    return complex<RESULT>(((RESULT)r - (RESULT)l.re), -(RESULT)l.im);        \
-  }                                                                           \
-  complex<RESULT> inline operator-(complex<T1> l, T2 r) {                     \
-    ASP_C(hcadd_count)                                                        \
-    return complex<RESULT>(((RESULT)r - (RESULT)l.re), -(RESULT)l.im);        \
-  }                                                                           \
-                                                                              \
-  complex<RESULT> inline operator+(complex<T1> r, complex<T2> l) {            \
-    ASP_C(cadd_count)                                                         \
-    return complex<RESULT>((RESULT)r.re + (RESULT)l.re,                       \
-                           (RESULT)r.im + (RESULT)l.im);                      \
-  }                                                                           \
-  complex<RESULT> inline operator+(T1 r, complex<T2> l) {                     \
-    ASP_C(hcadd_count)                                                        \
-    return (complex<RESULT>((RESULT)r + (RESULT)l.re, (RESULT)l.im));         \
-  }                                                                           \
-  complex<RESULT> inline operator+(complex<T1> l, T2 r) {                     \
-    ASP_C(hcadd_count)                                                        \
-    return (complex<RESULT>((RESULT)r + (RESULT)l.re, (RESULT)l.im));         \
-  }                                                                           \
-                                                                              \
-  complex<RESULT> inline operator*(T1 r, complex<T2> l) {                     \
-    ASP_C(hcmult_count)                                                       \
-    return (complex<RESULT>(r * l.re, r * l.im));                             \
-  }                                                                           \
-  complex<RESULT> inline operator*(complex<T1> l, T2 r) {                     \
-    ASP_C(hcmult_count)                                                       \
-    return (complex<RESULT>(r * l.re, r * l.im));                             \
-  }                                                                           \
-  complex<RESULT> inline operator*(complex<T1> r, complex<T2> l) {            \
-    ASP_C(cmult_count)                                                        \
-    ASP_C(cadd_count)                                                         \
-    return (complex<RESULT>(((r.re * l.re) - (r.im * l.im)),                  \
-                            (r.re * l.im + r.im * l.re)));                    \
-  }                                                                           \
-                                                                              \
-  complex<RESULT> inline operator/(complex<T1> l, T2 r) {                     \
-    ASP_C(hdiv_count)                                                         \
-    SPUC_ASSERT(r != T2(0));                                                  \
-    return (                                                                  \
-        complex<RESULT>((RESULT)l.re / (RESULT)r, (RESULT)l.im / (RESULT)r)); \
-  }                                                                           \
-  complex<RESULT> inline operator/(complex<T1> r, complex<T2> l) {            \
-    ASP_C(div_count)                                                          \
-    return (complex<RESULT>((r * conj(l)) / ((RESULT)magsq(l))));             \
-  }                                                                           \
-  complex<RESULT> inline operator/(T1 r, complex<T2> l) {                     \
-    ASP_C(hdiv_count)                                                         \
-    return (complex<RESULT>((r * conj(l)) / (RESULT)magsq(l)));               \
+#define COMPLEX_SINGOP(T1, T2, RESULT)                                                      \
+  complex<RESULT> inline operator-(complex<T1> r, complex<T2> l) {                          \
+    ASP_C(cadd_count)                                                                       \
+    return complex<RESULT>((RESULT)r.re - (RESULT)l.re, (RESULT)r.im - (RESULT)l.im);       \
+  }                                                                                         \
+  complex<RESULT> inline operator-(T1 r, complex<T2> l) {                                   \
+    ASP_C(hcadd_count)                                                                      \
+    return complex<RESULT>(((RESULT)r - (RESULT)l.re), -(RESULT)l.im);                      \
+  }                                                                                         \
+  complex<RESULT> inline operator-(complex<T1> l, T2 r) {                                   \
+    ASP_C(hcadd_count)                                                                      \
+    return complex<RESULT>(((RESULT)r - (RESULT)l.re), -(RESULT)l.im);                      \
+  }                                                                                         \
+                                                                                            \
+  complex<RESULT> inline operator+(complex<T1> r, complex<T2> l) {                          \
+    ASP_C(cadd_count)                                                                       \
+    return complex<RESULT>((RESULT)r.re + (RESULT)l.re, (RESULT)r.im + (RESULT)l.im);       \
+  }                                                                                         \
+  complex<RESULT> inline operator+(T1 r, complex<T2> l) {                                   \
+    ASP_C(hcadd_count)                                                                      \
+    return (complex<RESULT>((RESULT)r + (RESULT)l.re, (RESULT)l.im));                       \
+  }                                                                                         \
+  complex<RESULT> inline operator+(complex<T1> l, T2 r) {                                   \
+    ASP_C(hcadd_count)                                                                      \
+    return (complex<RESULT>((RESULT)r + (RESULT)l.re, (RESULT)l.im));                       \
+  }                                                                                         \
+                                                                                            \
+  complex<RESULT> inline operator*(T1 r, complex<T2> l) {                                   \
+    ASP_C(hcmult_count)                                                                     \
+    return (complex<RESULT>(r * l.re, r * l.im));                                           \
+  }                                                                                         \
+  complex<RESULT> inline operator*(complex<T1> l, T2 r) {                                   \
+    ASP_C(hcmult_count)                                                                     \
+    return (complex<RESULT>(r * l.re, r * l.im));                                           \
+  }                                                                                         \
+  complex<RESULT> inline operator*(complex<T1> r, complex<T2> l) {                          \
+    ASP_C(cmult_count)                                                                      \
+    ASP_C(cadd_count)                                                                       \
+    return (complex<RESULT>(((r.re * l.re) - (r.im * l.im)), (r.re * l.im + r.im * l.re))); \
+  }                                                                                         \
+                                                                                            \
+  complex<RESULT> inline operator/(complex<T1> l, T2 r) {                                   \
+    ASP_C(hdiv_count)                                                                       \
+    SPUC_ASSERT(r != T2(0));                                                                \
+    return (complex<RESULT>((RESULT)l.re / (RESULT)r, (RESULT)l.im / (RESULT)r));           \
+  }                                                                                         \
+  complex<RESULT> inline operator/(complex<T1> r, complex<T2> l) {                          \
+    ASP_C(div_count)                                                                        \
+    return (complex<RESULT>((r * conj(l)) / ((RESULT)magsq(l))));                           \
+  }                                                                                         \
+  complex<RESULT> inline operator/(T1 r, complex<T2> l) {                                   \
+    ASP_C(hdiv_count)                                                                       \
+    return (complex<RESULT>((r * conj(l)) / (RESULT)magsq(l)));                             \
   }
 
 COMPLEX_SINGOP(float, float, float)
@@ -157,24 +145,19 @@ COMPLEX_MULTOP(Float, Double, double)
 // COMPLEX_MULTOP(int_s,vfixed,vfixed)
 
 #ifdef COMPLEXTEMPLATES_OK
-template <typename T1, typename T2>
-complex<typename mixed_type<T1, T2>::dtype> operator*(T1 r, complex<T2> l) {
+template <typename T1, typename T2> complex<typename mixed_type<T1, T2>::dtype> operator*(T1 r, complex<T2> l) {
   ASP_C(hcmult_count)
   return (complex<typename mixed_type<T1, T2>::dtype>(r * l.re, r * l.im));
 }
-template <typename T1, typename T2>
-complex<typename mixed_type<T1, T2>::dtype> operator+(T1 r, complex<T2> l) {
+template <typename T1, typename T2> complex<typename mixed_type<T1, T2>::dtype> operator+(T1 r, complex<T2> l) {
   ASP_C(hcadd_count)
   return (complex<typename mixed_type<T1, T2>::dtype>(
-      (typename mixed_type<T1, T2>::dtype)r +
-          (typename mixed_type<T1, T2>::dtype)l.re,
+      (typename mixed_type<T1, T2>::dtype)r + (typename mixed_type<T1, T2>::dtype)l.re,
       (typename mixed_type<T1, T2>::dtype)l.im));
 }
-template <typename T1, typename T2>
-complex<typename mixed_type<T1, T2>::dtype> operator/(T1 r, complex<T2> l) {
+template <typename T1, typename T2> complex<typename mixed_type<T1, T2>::dtype> operator/(T1 r, complex<T2> l) {
   ASP_C(hcdiv_count)
-  return (complex<typename mixed_type<T1, T2>::dtype>(
-      (r * conj(l) / (typename mixed_type<T1, T2>::dtype)magsq(l))));
+  return (complex<typename mixed_type<T1, T2>::dtype>((r * conj(l) / (typename mixed_type<T1, T2>::dtype)magsq(l))));
 }
 #endif
 }

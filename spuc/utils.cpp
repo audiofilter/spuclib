@@ -24,8 +24,6 @@ void remove_path(string& in) {
   char delim = '/';
   // Split on delim
   size_t pos = in.find_last_of(delim);
-  if (pos != string::npos) {
-    in = in.substr(pos + 1);
-  }
+  if (pos != string::npos) { in = in.substr(pos + 1); }
 }
 }  // namespace SPUC

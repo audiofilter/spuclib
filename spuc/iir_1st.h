@@ -20,8 +20,7 @@ namespace SPUC {
 //!   Note: Not normalized
 //! \author Tony Kirke
 //! \ingroup double_templates iir
-template <class Numeric, class Coeff = float_type>
-class iir_1st {
+template <class Numeric, class Coeff = float_type> class iir_1st {
  protected:
   Coeff a;
   Coeff b;
@@ -31,18 +30,14 @@ class iir_1st {
   quantiser<Numeric> Q;
 
  public:
-  iir_1st(Coeff A = 0, Coeff B = 0, long rb = 0) : a(A), b(B), Q(rb) {
-    previous_in = previous_out = out = (Numeric)0;
-  }
+  iir_1st(Coeff A = 0, Coeff B = 0, long rb = 0) : a(A), b(B), Q(rb) { previous_in = previous_out = out = (Numeric)0; }
   void set_coeffs(Coeff A, Coeff B) {
     a = A;
     b = B;
   }
   void set_round_bits(long x) { Q.set_bits(x); }
   //! Print out coefficients
-  void print() {
-    std::cout << "IIR Coefficient gains = " << a << " " << b << "\n";
-  }
+  void print() { std::cout << "IIR Coefficient gains = " << a << " " << b << "\n"; }
   //! Input new sample and calculate output
   Numeric clock(Numeric input) {
     typename mixed_type<Numeric, Coeff>::dtype sum;

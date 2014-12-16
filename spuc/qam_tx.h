@@ -25,8 +25,7 @@ namespace SPUC {
 //! \author Tony Kirke
 //! \image html qam_tx.png
 //!  \ingroup real_templates comm modulators
-template <class Numeric>
-class qam_tx {
+template <class Numeric> class qam_tx {
  public:
   typedef typename fundtype<Numeric>::ftype CNumeric;
   float_type alpha;
@@ -47,13 +46,8 @@ class qam_tx {
   //----------------------------------------------------------------------------
   // Constructor!
   //---------------------------------------------------------------------------
-  qam_tx(long sym_sp = 5, long over_sam = 8, long mod_rate = 0,
-         long conv_rate = 0, float_type rc_alpha = 0.25)
-      : alpha(rc_alpha),
-        training_source(0x074d, 1023, -1),
-        ENC(3),
-        tx_filter(sym_sp * over_sam + 1),
-        rate(mod_rate) {
+  qam_tx(long sym_sp = 5, long over_sam = 8, long mod_rate = 0, long conv_rate = 0, float_type rc_alpha = 0.25)
+      : alpha(rc_alpha), training_source(0x074d, 1023, -1), ENC(3), tx_filter(sym_sp * over_sam + 1), rate(mod_rate) {
     preamble_pn = 63 * 4;
     training_interval = 2048;
     over = over_sam;
@@ -113,9 +107,7 @@ class qam_tx {
         tx_data = complex<CNumeric>(preamble_source.out(), 0);
       } else if (tx_symbols < training_interval + preamble_pn) {
         tx_data = training_scale * complex<CNumeric>(training_source.out(), 0);
-      } else {
-        tx_data = ENC.data_map(rate, 0);
-      }
+      } else { tx_data = ENC.data_map(rate, 0); }
       tx_symbols++;
       tx_filter.input(tx_data);
     }

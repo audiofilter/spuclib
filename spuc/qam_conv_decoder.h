@@ -45,10 +45,7 @@ class qam_conv_decoder {
   bool no_conv;  // Bypass Viterbi when true
 
  public:
-  qam_conv_decoder(int index)
-      : Max_bits_per_symbol(8),
-        soft_decision_level(64),
-        viterbi_input(Max_bits_per_symbol) {
+  qam_conv_decoder(int index) : Max_bits_per_symbol(8), soft_decision_level(64), viterbi_input(Max_bits_per_symbol) {
     no_conv = 0;
     rate_index = index;
     reset();

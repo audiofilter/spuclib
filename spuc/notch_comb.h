@@ -11,8 +11,7 @@ namespace SPUC {
 //! \author Tony Kirke
 //! \author Tony Kirke
 //! \ingroup double_templates double_templates iir
-template <class Numeric, class Coeff = float_type>
-class notch_comb {
+template <class Numeric, class Coeff = float_type> class notch_comb {
  public:
   allpass_1<Numeric, Coeff> ap;
 

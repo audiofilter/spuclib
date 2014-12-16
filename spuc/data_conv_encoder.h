@@ -45,8 +45,7 @@ class data_conv_encoder {
   bool no_conv;
 
   // Constructor (with default data rate)
-  data_conv_encoder(int index, int T_fft)
-      : test_pn(0x0013, 32767, -1), raw_data(16 * T_fft), pre_mod(T_fft) {
+  data_conv_encoder(int index, int T_fft) : test_pn(0x0013, 32767, -1), raw_data(16 * T_fft), pre_mod(T_fft) {
     g1 = 0x6d;
     g2 = 0x4f;
     rate_index = index;

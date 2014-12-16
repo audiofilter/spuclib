@@ -7,8 +7,7 @@
 namespace SPUC {
 // Copyright (c) 2014, Tony Kirke. License: MIT License (http://www.opensource.org/licenses/mit-license.php)
 // from directory: spuc_double_templates
-template <class Numeric, class Coeff = float_type>
-class nested_iir_allpass_2 {
+template <class Numeric, class Coeff = float_type> class nested_iir_allpass_2 {
  protected:
   //! The 2 1st order allpass filters
   int Delay;
@@ -81,9 +80,7 @@ class nested_iir_allpass_2 {
     dly_input = D0.clock(input);
     out1 = A1.clock(dly_input);
 
-    if (hpf) {
-      return (round(out0 - out1, 1));
-    } else {
+    if (hpf) { return (round(out0 - out1, 1)); } else {
       return (round(out0 + out1, 1));
     }
     // Complimentary filter return(0.5*(out0 - out1));
