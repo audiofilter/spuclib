@@ -6,8 +6,6 @@ compiler:
   - clang
 before_install:
   - brew update
-install:
-  - brew install cmake
 # Change this to your needs
 before_script:
   - mkdir build
